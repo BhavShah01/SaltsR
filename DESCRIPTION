@@ -12,7 +12,6 @@ Authors@R: c(
   )
 Maintainer: Bhavesh Shah <bhaveshshah01@gmail.com>
 Description: Tools for the analysis of salt formation data.
-    .
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
@@ -28,4 +27,7 @@ Imports:
     rlang,
     shiny,
     ggplot2,
-    dplyr
+    dplyr,
+    tibble
+Depends: 
+    R (>= 2.10)
