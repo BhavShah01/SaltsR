@@ -1,6 +1,6 @@
 # SaltsR - Tools for the analysis of salt formation data
 
-The Salts package documentation is available at: [SaltsR Package Documentation](https://bhavshah01.github.io/ConSciR/index.html)
+The Salts package documentation is available at: [SaltsR Package Documentation](https://bhavshah01.github.io/SaltsR/)
 
 The SaltsR Github page: [SaltsR Github](https://github.com/BhavShah01/SaltsR)
 
