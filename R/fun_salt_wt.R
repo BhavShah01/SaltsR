@@ -8,6 +8,8 @@
 #' @export
 #'
 #' @examples
+#'
+#'
 fun_salt_wt <- function(salt_ppm, dry_g, water_ml) {
   salt_wt <- (salt_ppm * water_ml) / (10000 * dry_g)
   return(salt_wt)

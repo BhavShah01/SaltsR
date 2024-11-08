@@ -9,6 +9,8 @@
 #' @export
 #'
 #' @examples
+#'
+#'
 fun_salt_mileq <- function(
     salt_ppm, dry_g, water_ml, mol_wts) {
   salt_mileq <-
