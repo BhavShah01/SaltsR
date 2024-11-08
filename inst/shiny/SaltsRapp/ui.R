@@ -1,33 +1,21 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    https://shiny.posit.co/
-#
+# inst/shiny/SaltsR/app.R
+## SaltsR app
 
-library(shiny)
 
-# Define UI for application that draws a histogram
-fluidPage(
+ui <- page_sidebar(
+  title = "SaltsR",
 
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
+  sidebar = sidebar(
+    title = "Histogram controls",
+    uiOutput("var"),
+    uiOutput("bins")
+  ),
 
-    # Sidebar with a slider input for number of bins
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-            plotOutput("distPlot")
-        )
-    )
+  card(height = 1000,
+    card_header("Histogram"),
+    plotOutput("p")
+  ),
+  card(
+    card_header("Histogram2")
+  )
 )
