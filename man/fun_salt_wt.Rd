@@ -2,7 +2,7 @@
 % Please edit documentation in R/fun_salt_wt.R
 \name{fun_salt_wt}
 \alias{fun_salt_wt}
-\title{Ion content in the sample (w%)}
+\title{Ion content in the sample (w\%)}
 \usage{
 fun_salt_wt(salt_ppm, dry_g, water_ml)
 }
@@ -17,5 +17,5 @@ fun_salt_wt(salt_ppm, dry_g, water_ml)
 salt_wt Ion content in the sample
 }
 \description{
-Ion content in the sample (w%)
+Ion content in the sample (w\%)
 }

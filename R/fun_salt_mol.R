@@ -9,6 +9,6 @@
 #'
 #' @examples
 fun_salt_mol <- function(salt_ppm, water_ml, mol_wts) {
-  salt_mol <- (0.001 *  salt_ppm * water_ml) / mol_wts
+  salt_mol <- (0.001 * salt_ppm * water_ml) / mol_wts
   return(salt_mol)
 }

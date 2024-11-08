@@ -2,13 +2,30 @@ Package: SaltsR
 Type: Package
 Title: SaltsR - Tools for the analysis of salt formation data
 Version: 0.1.0
-Author: Bhav
+Authors@R: c(
+    person("Bhavesh", "Shah", , "bhaveshshah01@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-8673-0589")),
+    person("Sebastiaan", "Godts", , "", role = c("aut"),
+           comment = c(ORCID = "0000-0003-2189-2995")),
+    person("Scott", "Orr", , "", role = c("aut"),
+           comment = c(ORCID = "0000-0002-2549-9173"))
+  )
 Maintainer: Bhavesh Shah <bhaveshshah01@gmail.com>
 Description: Tools for the analysis of salt formation data.
     .
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/BhavShah01/SaltsR
+URL: https://bhavshah01.github.io/SaltsR/
 BugReports: https://github.com/BhavShah01/SaltsR/issues
 RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    bslib
+Imports:
+    rlang,
+    shiny,
+    ggplot2,
+    dplyr

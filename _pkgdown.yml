@@ -1,7 +1,8 @@
-url: ~
+url: https://bhavshah01.github.io/SaltsR/
 template:
   bootstrap: 5
-  bootswatch: slate
+  bslib:
+    bootswatch: shiny
   light-switch: yes
 reference:
 - title: Functions
