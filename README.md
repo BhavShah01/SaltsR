@@ -7,7 +7,7 @@ The SaltsR Github page: [SaltsR Github](https://github.com/BhavShah01/SaltsR)
 
 ## Introduction
 
-SaltsR is an R package specifically designed to assist conservators and scientists by providing a toolkit for performing essential calculations 
+SaltsR is an R package specifically designed to assist conservators and scientists by providing a toolkit for performing calculations using the data from ion chromatagraphy to predict salt formation. 
 
 
 ## Install and load
