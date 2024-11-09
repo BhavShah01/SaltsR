@@ -1,14 +1,4 @@
 url: https://bhavshah01.github.io/SaltsR/
 template:
   bootstrap: 5
-light-switch: yes
-reference:
-- title: Functions
-  desc: Functions for performing calculations.
-  contents:
-    - fun_salt_wt
-    - fun_salt_mol
-    - fun_salt_mileq
-    - fun_salt_mileq_g
-    - fun_salt_calcs_old
 
