@@ -1,9 +1,7 @@
 url: https://bhavshah01.github.io/SaltsR/
 template:
   bootstrap: 5
-  bslib:
-    bootswatch: shiny
-    light-switch: yes
+light-switch: yes
 reference:
 - title: Functions
   desc: Functions for performing calculations.
