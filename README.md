@@ -6,7 +6,18 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of SaltsR is to …
+SaltsR is a data science tool to aid scientists, researchers,
+conservators and managers of cultural heritage that are interested in
+protecting heritage from salt weathering.
+
+KIK-IRPA PREDICT: <https://predict.kikirpa.be/>
+
+Salt Wiki: <https://www.saltwiki.net/index.php/Home>
+
+ECOS – RUNSALT : <http://science.sdf-eu.org/runsalt/>
+
+MDCS / Monument Diagnosis and Conservation System :
+<https://mdcs.monumentenkennis.nl/>
 
 ## Installation
 

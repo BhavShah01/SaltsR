@@ -1,4 +1,6 @@
 url: https://bhavshah01.github.io/SaltsR/
 template:
   bootstrap: 5
+  bootswatch: shiny
+  light-switch: true
 
