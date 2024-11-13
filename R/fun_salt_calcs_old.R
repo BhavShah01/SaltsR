@@ -25,6 +25,7 @@
 #'
 #' @examples
 #'
+#' salt_test |> fun_salt_calcs_old()
 #'
 #'
 fun_salt_calcs_old <- function(

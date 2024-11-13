@@ -17,5 +17,14 @@ fun_salt_mol(salt_ppm, water_ml, mol_wts)
 salt_mol Molar concentration, mols
 }
 \description{
-Molar concentration, mols
+Calculate ion values as mole fraction (mols)
+}
+\details{
+Eqn
+}
+\examples{
+# Chloride test data
+fun_salt_mol(66.824, 100, 35.453)
+
+
 }

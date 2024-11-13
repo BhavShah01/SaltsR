@@ -19,5 +19,13 @@ fun_salt_mileq_g(salt_ppm, dry_g, water_ml, mol_wts)
 salt_mileq_g, milliequivalents per gram (mEq/g)
 }
 \description{
-Milliequivalents per gram (mEq/g)
+Calculate initial amount of substance per ion (Eq/g). Use fun_salt_mileq for charge balance.
+}
+\details{
+Eqn 2. Equivalents per gram (e_i_g).
+}
+\examples{
+# Chloride test data
+fun_salt_mileq_g(66.824, 1.128, 100, 35.453)
+
 }

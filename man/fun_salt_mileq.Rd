@@ -19,5 +19,14 @@ fun_salt_mileq(salt_ppm, dry_g, water_ml, mol_wts)
 salt_mileq, milliequivalents per kilogram (mEq/kg)
 }
 \description{
-Milliequivalents per kilogram (mEq/kg)
+Calculate initial amount of substance per ion (Eq/kg)
+}
+\details{
+Eqn 2. Equivalents per kilogram (e_i).
+}
+\examples{
+# Chloride test data
+fun_salt_mileq(66.824, 1.128, 100, 35.453)
+
+
 }

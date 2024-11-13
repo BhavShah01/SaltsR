@@ -1,0 +1,22 @@
+sample.id	Sample ID	SID
+inst.country.code	Institute Country Code	ICC
+legacy.sample.code	Institutional Lagacy  Sample ID	ILSID
+month	Sampling month	MM
+year	Sampling year	YYYY
+sample.country.code	Sample Location Country Code	SLCC
+sample.postcode	Object location postcode (if applicable)	OLPC
+sample.city	Sample City	SC
+sample.site	Sample (site) Name	SN
+gps	GPS coordinates	GPS
+material	Sample Material	SM
+height	Sample Height	H (cm)
+depth	Sample depth from surface of specific material	D (cm to cm)
+m_s	 the dry sample mass (mg)	
+V_w	 volume of water (L)	
+c_Cl	 concentration of chloride (mg/L)	
+c_NO3	 concentration of the nitrate (mg/L)	
+c_SO4	 concentration of sulfate (mg/L)	
+c_Na	 concentration of sodium (mg/L)	
+c_K	 concentration of potassium (mg/L)	
+c_Ca	 concentration of calcium (mg/L)	
+c_Mg	 concentration of magnesium (mg/L)	

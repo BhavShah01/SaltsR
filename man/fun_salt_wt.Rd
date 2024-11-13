@@ -7,15 +7,25 @@
 fun_salt_wt(salt_ppm, dry_g, water_ml)
 }
 \arguments{
-\item{salt_ppm}{Ion concentration in ppm}
+\item{salt_ppm}{Ion concentration in ppm or mg/L}
 
 \item{dry_g}{Sample weight, g}
 
-\item{water_ml}{Amount of water, ml}
+\item{water_ml}{Amount of water, mL}
 }
 \value{
-salt_wt Ion content in the sample
+salt_wt Ion content in the sample (w\%)
 }
 \description{
-Ion content in the sample (w\%)
+Calculate weight fraction of each individual ion from concentration (ppm or mg/L),
+volume of water (mL) and the dry mass of the sample (g).
+}
+\details{
+Eqn 1. Weight fraction (w_i), preparation for charge balance equations.
+}
+\examples{
+# Chloride test data
+fun_salt_wt(66.824, 1.128, 100)
+
+
 }
