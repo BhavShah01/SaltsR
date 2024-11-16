@@ -1,0 +1,49 @@
+utils::globalVariables(
+  c(
+    "Chloride_wt",
+    "Nitrate_wt",
+    "Sulfate_wt",
+    "Sodium_wt",
+    "Potassium_wt",
+    "Calcium_wt",
+    "Magnesium_wt",
+    "total_wt",
+
+    "chloride_mEq",
+    "nitrate_mEq",
+    "sulfate_mEq",
+    "sodium_mEq",
+    "potassium_mEq",
+    "calcium_mEq",
+    "magnesium_mEq",
+    "total_mEq_anions",
+    "total_mEq_cations",
+
+    "abs_xs_ions_mEq",
+    "analytical_uncert",
+    "ave_ions_mEq",
+    "chloride_mEq_cor",
+    "nitrate_mEq_cor",
+    "sulfate_mEq_cor",
+    "sodium_mEq_cor",
+    "potassium_mEq_cor",
+    "calcium_mEq_cor",
+    "magnesium_mEq_cor",
+
+    "ion_check_chloride",
+    "ion_check_nitrate",
+    "ion_check_sulfate",
+    "ion_check_sodium",
+    "ion_check_potassium",
+    "ion_check_calcium",
+    "ion_check_magnesium",
+
+    "chloride_mEq_SO4",
+    "nitrate_mEq_SO4",
+    "sulfate_mEq_SO4",
+    "sodium_mEq_SO4",
+    "ipotassium_mEq_SO4",
+    "calcium_mEq_SO4",
+    "magnesium_mEq_SO4"
+    )
+  )

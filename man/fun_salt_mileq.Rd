@@ -4,7 +4,7 @@
 \alias{fun_salt_mileq}
 \title{Milliequivalents per kilogram (mEq/kg)}
 \usage{
-fun_salt_mileq(salt_ppm, dry_g, water_ml, mol_wts)
+fun_salt_mileq(salt_ppm, dry_g, water_ml, mol_wts, salt_charges_z)
 }
 \arguments{
 \item{salt_ppm}{Ion concentration in ppm}
@@ -14,6 +14,8 @@ fun_salt_mileq(salt_ppm, dry_g, water_ml, mol_wts)
 \item{water_ml}{Amount of water, ml}
 
 \item{mol_wts}{Molecular weight}
+
+\item{salt_charges_z}{Salt charge, z}
 }
 \value{
 salt_mileq, milliequivalents per kilogram (mEq/kg)
@@ -26,7 +28,13 @@ Eqn 2. Equivalents per kilogram (e_i).
 }
 \examples{
 # Chloride test data
-fun_salt_mileq(66.824, 1.128, 100, 35.453)
+fun_salt_mileq(66.824, 1.128, 100, 35.453, 1)
+
+\dontrun{
+salt_test |> fun_salt_mileq(chloride_ppm, dry_g, water_ml, mol_wts = mol_wts$chloride, salt_charges_z = salt_charges_z$chloride)
+
+fun_salt_mileq(39.923, 0.801, 100, mol_wts$sulfate, salt_charges_z$sulfate)
+}
 
 
 }

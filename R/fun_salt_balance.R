@@ -22,7 +22,9 @@
 #' @importFrom dplyr glimpse
 #'
 #' @examples
-#' fun_salt_balance(sample_name = "Pathway 2", dry_g = 0.801, water_ml = 100, chloride_ppm = 14.651, nitrate_ppm = 17.339, sulfate_ppm = 39.923, sodium_ppm = 2.027, potassium_ppm = 2.04, calcium_ppm = 49.809, magnesium_ppm = 0.581) |> glimpse()
+#' \dontrun{
+#' fun_salt_balance(sample_name = "Pathway 2", dry_g = 0.801, water_ml = 100, chloride_ppm = 14.651, nitrate_ppm = 17.339, sulfate_ppm = 39.923, sodium_ppm = 2.027, potassium_ppm = 2.04, calcium_ppm = 49.809, magnesium_ppm = 0.581) |> dplyr::glimpse()
+#' }
 #'
 #'
 fun_salt_balance <- function(
@@ -318,25 +320,30 @@ fun_salt_balance <- function(
   # Gypsum content
   # wCaSO4 (-)
   gypsum_content = ((gypsum_content_limit) * (0.5 * (mol_wts$sulfate + mol_wts$calcium)) * 0.000001)
-  #
+
   # saturation degree of determined  gypsum content in given sample/water ratio (considering 2.14g/L 20C)
   # SCaSO4 (%)
   saturation_gypsum_content = gypsum_content / ((0.214 * water_ml / 10000) / dry_g * 100)
+
   # Total amount of the adjusted ion content (excluding gypsum)
   # wtot,adj (-) eq11
   total_ion_content = total_wt_adj_gypsum - gypsum_content
+
   # adjusted content sum Na+, K+
   # wMg,Na,K,adj (-)
   sodium_potassium_content_adj = ifelse(
     Pathway == "Pathway 2", abs((sodium_wt_adj + potassium_wt_adj) - (sodium_wt + potassium_wt)), NA)
+
   # adjusted content Mg2+
   # wMg,adj (-)
   magnessium_content_adj = ifelse(
     Pathway == "Pathway 2", (((abs(magnesium_mEq_adj - magnesium_mEq)) * 0.024305) / 2) * 0.001, NA)
+
   # adjusted content Ca2+
   # wCa,adj (-)2
   calcium_content_adj =ifelse(
     Pathway == "Pathway 2", (((abs(calcium_mEq_adj - calcium_mEq)) * 0.040078) / 2) * 0.001, NA)
+
   # hypothetical CO32- content related to Na+, K+
   # wCO3,h (-)
   hypothetical_CO3 = ifelse(

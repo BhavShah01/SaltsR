@@ -20,6 +20,9 @@
 #' # Chloride test data
 #' fun_salt_wt(66.824, 1.128, 100)
 #'
+#' \dontrun{
+#' salt_test |> fun_salt_wt(chloride_ppm, dry_g, water_ml)
+#' }
 #'
 fun_salt_wt <- function(salt_ppm, dry_g, water_ml) {
   salt_wt <-
