@@ -2,9 +2,12 @@
 
 export(fun_salt_AMC)
 export(fun_salt_HMC)
+export(fun_salt_balance)
 export(fun_salt_calcs_old)
 export(fun_salt_mileq)
 export(fun_salt_mileq_g)
 export(fun_salt_mol)
 export(fun_salt_wt)
+importFrom(dplyr,glimpse)
 importFrom(dplyr,mutate)
+importFrom(tibble,tibble)

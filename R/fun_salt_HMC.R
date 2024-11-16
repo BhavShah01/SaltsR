@@ -3,7 +3,7 @@
 #' @description
 #' Calculate the Hygroscopic Moisture Content from sample measurement data
 #'
-#' @details
+#'
 #'
 #'
 #'

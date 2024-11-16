@@ -3,7 +3,7 @@
 #' @description
 #' Calculate the Actual Moisture Content from sample measurement data
 #'
-#' @details
+#'
 #'
 #'
 #'

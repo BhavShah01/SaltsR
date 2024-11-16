@@ -13,7 +13,7 @@ fun_salt_mileq(salt_ppm, dry_g, water_ml, mol_wts)
 
 \item{water_ml}{Amount of water, ml}
 
-\item{mol_wts}{Molecular weight. Divide mol_wt by 2 if sulfate (48.03) and calcium (20.04)}
+\item{mol_wts}{Molecular weight}
 }
 \value{
 salt_mileq, milliequivalents per kilogram (mEq/kg)

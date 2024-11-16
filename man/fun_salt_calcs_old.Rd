@@ -50,7 +50,6 @@ Performs a salt balance on ion chromatography data and returns outputs for ECOS 
 This function is now deprecated and is being replaced with a new function.
 }
 \examples{
-
 salt_test |> fun_salt_calcs_old()
 
 

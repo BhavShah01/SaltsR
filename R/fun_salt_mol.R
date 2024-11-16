@@ -10,7 +10,7 @@
 #'
 #' @param salt_ppm Ion concentration in ppm
 #' @param water_ml Amount of water, ml
-#' @param mol_wts Molecular weight. Divide mol_wt by 2 if sulfate (48.03) and calcium (20.04)
+#' @param mol_wts Molecular weight
 #'
 #' @return salt_mol Molar concentration, mols
 #' @export

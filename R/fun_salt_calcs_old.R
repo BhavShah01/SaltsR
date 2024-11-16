@@ -24,7 +24,6 @@
 #' @importFrom dplyr mutate
 #'
 #' @examples
-#'
 #' salt_test |> fun_salt_calcs_old()
 #'
 #'

@@ -11,7 +11,7 @@ fun_salt_mol(salt_ppm, water_ml, mol_wts)
 
 \item{water_ml}{Amount of water, ml}
 
-\item{mol_wts}{Molecular weight. Divide mol_wt by 2 if sulfate (48.03) and calcium (20.04)}
+\item{mol_wts}{Molecular weight}
 }
 \value{
 salt_mol Molar concentration, mols
