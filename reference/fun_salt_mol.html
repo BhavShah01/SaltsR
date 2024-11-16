@@ -44,7 +44,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">fun_salt_mol</span><span class="op">(</span><span class="va">salt_ppm</span>, <span class="va">water_ml</span>, <span class="va">mol_wts</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">fun_salt_mol</span><span class="op">(</span><span class="va">salt_ppm</span>, <span class="va">water_ml</span>, <span class="va">mol_wts</span>, <span class="va">salt_charges_z</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -62,6 +62,10 @@
 <dt id="arg-mol-wts">mol_wts<a class="anchor" aria-label="anchor" href="#arg-mol-wts"></a></dt>
 <dd><p>Molecular weight</p></dd>
 
+
+<dt id="arg-salt-charges-z">salt_charges_z<a class="anchor" aria-label="anchor" href="#arg-salt-charges-z"></a></dt>
+<dd><p>Salt charge, z</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -75,8 +79,16 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Chloride test data</span></span></span>
-<span class="r-in"><span><span class="fu">fun_salt_mol</span><span class="op">(</span><span class="fl">66.824</span>, <span class="fl">100</span>, <span class="fl">35.453</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">fun_salt_mol</span><span class="op">(</span><span class="fl">66.824</span>, <span class="fl">100</span>, <span class="fl">35.453</span>, <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1884862</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="va">salt_test</span> <span class="op">|&gt;</span> <span class="fu">fun_salt_mol</span><span class="op">(</span><span class="va">chloride_ppm</span>, <span class="va">mol_wts</span><span class="op">$</span><span class="va">chloride</span>, <span class="va">salt_charges_z</span><span class="op">$</span><span class="va">chloride</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">fun_salt_mol</span><span class="op">(</span><span class="fl">14.651</span>, <span class="fl">0.801</span>, <span class="fl">100</span>, <span class="va">mol_wts</span><span class="op">$</span><span class="va">chloride</span>, <span class="va">salt_charges_z</span><span class="op">$</span><span class="va">chloride</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">fun_salt_mol</span><span class="op">(</span><span class="fl">17.339</span>, <span class="fl">0.801</span>, <span class="fl">100</span>, <span class="va">mol_wts</span><span class="op">$</span><span class="va">nitrate</span>, <span class="va">salt_charges_z</span><span class="op">$</span><span class="va">nitrate</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">fun_salt_mol</span><span class="op">(</span><span class="fl">39.923</span>, <span class="fl">0.801</span>, <span class="fl">100</span>, <span class="va">mol_wts</span><span class="op">$</span><span class="va">sulfate</span>, <span class="va">salt_charges_z</span><span class="op">$</span><span class="va">sulfate</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
