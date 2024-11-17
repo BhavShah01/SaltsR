@@ -21,11 +21,6 @@
 #' # Chloride test data
 #' fun_salt_mileq(66.824, 1.128, 100, 35.453, 1)
 #'
-#' \dontrun{
-#' salt_test |> fun_salt_mileq(chloride_ppm, dry_g, water_ml, mol_wts = mol_wts$chloride, salt_charges_z = salt_charges_z$chloride)
-#'
-#' fun_salt_mileq(39.923, 0.801, 100, mol_wts$sulfate, salt_charges_z$sulfate)
-#' }
 #'
 #'
 fun_salt_mileq <- function(salt_ppm, dry_g, water_ml, mol_wts, salt_charges_z) {

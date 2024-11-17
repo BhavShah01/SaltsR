@@ -20,9 +20,6 @@ A data frame with 10 columns:
   ...
 }
 }
-\source{
-Climate
-}
 \usage{
 salt_test
 }

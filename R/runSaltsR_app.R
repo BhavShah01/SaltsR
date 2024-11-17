@@ -1,33 +1,25 @@
 #' Run SaltsR Shiny Application
 #'
+#' @description
+#' Run this application to test the functions and perform a salt balance
+#'
+#'
 #' @param example
 #'
 #' @return Shiny object
 #' @export
 #'
 #' @examples
-#' # runSaltsR_app()
+#' \dontrun{
+#' runSaltsR_app()
+#' }
 #'
-runSaltsR_app <- function(example) {
-  # locate all the shiny app examples that exist
-  validExamples <- list.files(system.file("SaltsR_app", package = "SaltsR"))
+#'
+runSaltsR_app <- function() {
+    app_dir <- system.file("shiny", "SaltsR_app", package = "SaltsR")
+    if (app_dir == "") {
+      stop("Could not find example directory. Try re-installing SaltsR from Github", call. = FALSE)
+    }
 
-  validExamplesMsg <-
-    paste0(
-      "Valid examples are: '",
-      paste(validExamples, collapse = "', '"),
-      "'")
-
-  # if an invalid example is given, throw an error
-  if (missing(example) || !nzchar(example) ||
-      !example %in% validExamples) {
-    stop(
-      'Please run `runSaltsR_app()` with a valid example app as an argument.\n',
-      validExamplesMsg,
-      call. = FALSE)
+    shiny::runApp(app_dir, display.mode = "normal")
   }
-
-  # find and launch the app
-  appDir <- system.file("SaltsR_app", example, package = "SaltsR")
-  shiny::runApp(appDir, display.mode = "normal")
-}

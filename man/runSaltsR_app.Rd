@@ -4,7 +4,7 @@
 \alias{runSaltsR_app}
 \title{Run SaltsR Shiny Application}
 \usage{
-runSaltsR_app(example)
+runSaltsR_app()
 }
 \arguments{
 \item{example}{}
@@ -13,9 +13,12 @@ runSaltsR_app(example)
 Shiny object
 }
 \description{
-Run SaltsR Shiny Application
+Run this application to test the functions and perform a salt balance
 }
 \examples{
-# runSaltsR_app()
+\dontrun{
+runSaltsR_app()
+}
+
 
 }

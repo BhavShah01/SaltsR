@@ -14,5 +14,5 @@
 #'   ...
 #' }
 #'
-#' @source Climate
+#'
 "mol_wts"

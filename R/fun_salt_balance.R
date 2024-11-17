@@ -350,6 +350,33 @@ fun_salt_balance <- function(
     Pathway == "Pathway 2", ((charge_imbalance_MgAdj + charge_imbalance_NaAdj + charge_imbalance_KAdj) / 1000000) * (60.01 / 2),
     NA)
 
+  # ECOS outputs
+  # Eqn 8b. Mols
+  chloride_x_ECOS = chloride_x
+  nitrate_x_ECOS = nitrate_x
+  sulfate_x_ECOS = sulfate_x
+  sodium_x_ECOS = sodium_x
+  potassium_x_ECOS = potassium_x
+  calcium_x_ECOS = calcium_x
+  magnesium_x_ECOS = magnesium_x
+
+  # Eqn 10. Weights
+  chloride_wt_ECOS = chloride_wt_adj
+  nitrate_wt_ECOS = nitrate_wt_adj
+  sulfate_wt_ECOS = sulfate_wt_adj
+  sodium_wt_ECOS = sodium_wt_adj
+  potassium_wt_ECOS = potassium_wt_adj
+  calcium_wt_ECOS = calcium_wt_adj
+  magnesium_wt_ECOS = magnesium_wt_adj
+
+  ECOS_pathway = Pathway
+  ECOS_warnings = ifelse(
+    saturation_gypsum_content > 1,
+    "The true gypsum content is likely to be higher and dilution is needed.",
+    "No warnings")
+
+
+
   # RESULTS Output dataframe with results of all calculations
   salt_balance <- tibble::tibble(
   # salt_balance <- c(
@@ -517,6 +544,28 @@ fun_salt_balance <- function(
     calcium_content_adj,
     hypothetical_CO3,
 
+    # ECOS outputs
+    # Mols
+    sodium_x_ECOS,
+    potassium_x_ECOS,
+    magnesium_x_ECOS,
+    calcium_x_ECOS,
+    chloride_x_ECOS,
+    nitrate_x_ECOS,
+    sulfate_x_ECOS,
+
+    # Weight
+    sodium_wt_ECOS,
+    potassium_wt_ECOS,
+    magnesium_wt_ECOS,
+    calcium_wt_ECOS,
+    chloride_wt_ECOS,
+    nitrate_wt_ECOS,
+    sulfate_wt_ECOS,
+
+    # Description and warnings
+    ECOS_pathway,
+    ECOS_warnings,
 
 
   )

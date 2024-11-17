@@ -3,4 +3,27 @@ template:
   bootstrap: 5
   bootswatch: shiny
   light-switch: true
-
+reference:
+- title: SaltsR Functions
+  desc: Perform salt balance for ECOS Runsalt
+  contents:
+    - fun_salt_balance
+- title: SaltsR Application
+  desc: SaltsR_app to peform salt balance for ECOS Runsalt
+  contents:
+    - runSaltsR_app
+- title: Datasets
+  desc: Datasets in the package
+  contents:
+    - mol_wts
+    - salt_charges_z
+    - salt_names
+    - salt_test
+- title: Other functions
+  desc: Tools for other calculations
+  contents:
+    - fun_salt_wt
+    - fun_salt_mol
+    - fun_salt_mileq
+    - fun_salt_AMC
+    - fun_salt_HMC

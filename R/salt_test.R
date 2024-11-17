@@ -1,6 +1,8 @@
 #' Test salt dataset
 #'
+#' @description
 #' Dataset used to test the functions.
+#'
 #'
 #' @format A data frame with 10 columns:
 #' \describe{
@@ -17,5 +19,4 @@
 #'   ...
 #' }
 #'
-#' @source Climate
 "salt_test"

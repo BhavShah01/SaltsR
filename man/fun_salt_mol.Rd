@@ -28,13 +28,5 @@ Eqn
 # Chloride test data
 fun_salt_mol(66.824, 100, 35.453, 1)
 
-\dontrun{
-salt_test |> fun_salt_mol(chloride_ppm, mol_wts$chloride, salt_charges_z$chloride)
-
-fun_salt_mol(14.651, 0.801, 100, mol_wts$chloride, salt_charges_z$chloride)
-fun_salt_mol(17.339, 0.801, 100, mol_wts$nitrate, salt_charges_z$nitrate)
-fun_salt_mol(39.923, 0.801, 100, mol_wts$sulfate, salt_charges_z$sulfate)
-}
-
 
 }

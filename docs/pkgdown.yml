@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   articles/SaltsR: SaltsR.html
-last_built: 2024-11-16T16:43Z
+last_built: 2024-11-17T01:36Z
 urls:
   reference: https://bhavshah01.github.io/SaltsR/reference
   article: https://bhavshah01.github.io/SaltsR/articles
