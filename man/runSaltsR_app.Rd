@@ -6,9 +6,6 @@
 \usage{
 runSaltsR_app()
 }
-\arguments{
-\item{example}{}
-}
 \value{
 Shiny object
 }
