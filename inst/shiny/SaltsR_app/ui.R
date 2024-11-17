@@ -4,7 +4,7 @@ library(shiny)
 library(bslib)
 
 ui <- page_sidebar(
-  title = "SaltsR",
+  title = "SaltsR - Tool for generating input for ECOS Runsalt",
   theme = bs_theme(bootswatch = "shiny"),
   sidebar = sidebar(
     title = "Start balance",
