@@ -12,6 +12,9 @@ protecting heritage from salt weathering.
 
 KIK-IRPA PREDICT: <https://predict.kikirpa.be/>
 
+Details of the calculation:
+<https://www.nature.com/articles/s41597-022-01445-9>
+
 Salt Wiki: <https://www.saltwiki.net/index.php/Home>
 
 ECOS – RUNSALT : <http://science.sdf-eu.org/runsalt/>

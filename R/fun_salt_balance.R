@@ -4,6 +4,13 @@
 #' Performs a salt balance on ion chromatography data and returns outputs for ECOS Runsalt software.
 #'
 #'
+#' @references
+#' Godts, S., Steiger, M., Orr, S.A. et al. Charge balance calculations for mixed salt systems applied to a large dataset from the built environment. Sci Data 9, 324 (2022). https://doi.org/10.1038/s41597-022-01445-9
+#'
+#'
+#' @source https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/`
+#'
+#'
 #' @param sample_name Sample name
 #' @param dry_g Dry mass of sample, g
 #' @param water_ml Water added for ion chromatography, ml

@@ -3,6 +3,9 @@
 \name{fun_salt_balance}
 \alias{fun_salt_balance}
 \title{Calculating salt balance from ion chromatography data}
+\source{
+https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/`
+}
 \usage{
 fun_salt_balance(
   sample_name,
@@ -50,4 +53,7 @@ fun_salt_balance(sample_name = "Pathway 2", dry_g = 0.801, water_ml = 100, chlor
 }
 
 
+}
+\references{
+Godts, S., Steiger, M., Orr, S.A. et al. Charge balance calculations for mixed salt systems applied to a large dataset from the built environment. Sci Data 9, 324 (2022). https://doi.org/10.1038/s41597-022-01445-9
 }
