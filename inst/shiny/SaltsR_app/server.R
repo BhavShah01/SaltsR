@@ -58,7 +58,7 @@ server <- function(input, output) {
 
   ECOS_results <- reactive({
     salts_results() |>
-      select(ends_with("_ECOS_wt"), ends_with("_ECOS_x")) |>
+      select(ends_with("_ECOS_weight"), ends_with("_ECOS_mol")) |>
       pivot_longer(cols = everything(), names_to = c("salt", "ECOS"), names_sep = "_ECOS_") |>
       pivot_wider(names_from = "salt", values_from = "value")
   })

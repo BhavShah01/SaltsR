@@ -7,14 +7,15 @@ ui <- page_sidebar(
   title = "SaltsR - Tool for generating input for ECOS Runsalt",
   theme = bs_theme(bootswatch = "shiny"),
   sidebar = sidebar(
-    title = "Start balance",
+    title = "Salt balance",
     uiOutput("sel_sample"),
+    "Balance summary:",
     textOutput("salts_pathway"),
     textOutput(" salts_warning"),
   ),
   card(
     full_screen = TRUE,
-    card_header("Salt balance (single)"),
+    card_header("Enter ion chromatography data"),
 
     card_body(
       layout_column_wrap(
@@ -30,7 +31,7 @@ ui <- page_sidebar(
         uiOutput("sel_magnesium")
       ),
       fluidRow(
-      h5("Inputs for ECOS Runsalt: X = `mol` and wt = `weight`"),
+      h5("Inputs for ECOS Runsalt"),
       DT::dataTableOutput("ECOS_table")
       ))
     ),
