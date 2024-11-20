@@ -8,10 +8,7 @@ ui <- page_sidebar(
   theme = bs_theme(bootswatch = "shiny"),
   sidebar = sidebar(
     title = "Salt balance",
-    uiOutput("sel_sample"),
-    "Balance summary:",
-    textOutput("salts_pathway"),
-    textOutput(" salts_warning"),
+    uiOutput("sel_sample")
   ),
   card(
     full_screen = TRUE,
@@ -31,8 +28,10 @@ ui <- page_sidebar(
         uiOutput("sel_magnesium")
       ),
       fluidRow(
-      h5("Inputs for ECOS Runsalt"),
-      DT::dataTableOutput("ECOS_table")
+        h5("Inputs for ECOS Runsalt"),
+        textOutput("salts_pathway"),
+        textOutput(" salts_warning"),
+        DT::dataTableOutput("ECOS_table")
       ))
-    ),
+  ),
 )
