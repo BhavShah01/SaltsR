@@ -1,9 +1,9 @@
-pandoc: 3.1.11
+pandoc: '3.2'
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   articles/SaltsR: SaltsR.html
-last_built: 2024-11-18T10:07Z
+last_built: 2024-11-20T22:26Z
 urls:
   reference: https://bhavshah01.github.io/SaltsR/reference
   article: https://bhavshah01.github.io/SaltsR/articles

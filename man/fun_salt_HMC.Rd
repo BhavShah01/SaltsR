@@ -11,11 +11,11 @@ fun_salt_HMC(
 )
 }
 \arguments{
-\item{sample_container_mass}{Sample container Mass, m_{c} (g)}
+\item{sample_container_mass}{Sample container Mass, m_c (g)}
 
-\item{dry_sample_container_mass}{Dry sample including container Mass, m_{dcs} (g)}
+\item{dry_sample_container_mass}{Dry sample including container Mass, m_dcs (g)}
 
-\item{wet_sample_container_mass}{Sample mass including container at 95\%RH and 20C, m_{cs95} (g)}
+\item{wet_sample_container_mass}{Sample mass including container at 95\%RH and 20C, m_cs95 (g)}
 }
 \value{
 HMC, Hygroscopic Moisture Content (wt \%)

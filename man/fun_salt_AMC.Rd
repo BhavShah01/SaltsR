@@ -11,11 +11,11 @@ fun_salt_AMC(
 )
 }
 \arguments{
-\item{sample_container_mass}{Sample container Mass, m_{c} (g)}
+\item{sample_container_mass}{Sample container Mass, m_c (g)}
 
-\item{initial_sample_container_mass}{Initilial sample  including container Mass, m_{ics} (g)}
+\item{initial_sample_container_mass}{Initilial sample  including container Mass, m_ics (g)}
 
-\item{dry_sample_container_mass}{Dry sample including container Mass, m_{dcs} (g)}
+\item{dry_sample_container_mass}{Dry sample including container Mass, m_dcs (g)}
 }
 \value{
 AMC, Actual Moisture Content (wt \%)

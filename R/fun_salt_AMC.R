@@ -7,9 +7,9 @@
 #'
 #'
 #'
-#' @param sample_container_mass Sample container Mass, m_{c} (g)
-#' @param initial_sample_container_mass Initilial sample  including container Mass, m_{ics} (g)
-#' @param dry_sample_container_mass Dry sample including container Mass, m_{dcs} (g)
+#' @param sample_container_mass Sample container Mass, m_c (g)
+#' @param initial_sample_container_mass Initilial sample  including container Mass, m_ics (g)
+#' @param dry_sample_container_mass Dry sample including container Mass, m_dcs (g)
 #'
 #' @return AMC, Actual Moisture Content (wt \%)
 #' @export

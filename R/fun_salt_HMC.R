@@ -7,9 +7,9 @@
 #'
 #'
 #'
-#' @param sample_container_mass Sample container Mass, m_{c} (g)
-#' @param dry_sample_container_mass Dry sample including container Mass, m_{dcs} (g)
-#' @param wet_sample_container_mass Sample mass including container at 95\%RH and 20C, m_{cs95} (g)
+#' @param sample_container_mass Sample container Mass, m_c (g)
+#' @param dry_sample_container_mass Dry sample including container Mass, m_dcs (g)
+#' @param wet_sample_container_mass Sample mass including container at 95\%RH and 20C, m_cs95 (g)
 #'
 #' @return HMC, Hygroscopic Moisture Content (wt \%)
 #' @export
