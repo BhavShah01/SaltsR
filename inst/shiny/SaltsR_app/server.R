@@ -56,15 +56,16 @@ server <- function(input, output) {
       magnesium_ppm = input$sel_magnesium)
   })
 
-  output$salts_x_ECOS <- renderDT({
+  ECOS_results <- reactive({
     salts_results() |>
-      select(ends_with("_x_ECOS")) |>
-      DT::datatable(extensions = c("Buttons"),
-                    list(dom = 'tB', buttons = list("copy", "excel")))
+      select(ends_with("_ECOS_wt"), ends_with("_ECOS_x")) |>
+      pivot_longer(cols = everything(), names_to = c("salt", "ECOS"), names_sep = "_ECOS_") |>
+      pivot_wider(names_from = "salt", values_from = "value")
   })
-  output$salts_wt_ECOS <- renderDT({
-    salts_results() |>
-      select(ends_with("_wt_ECOS")) |>
+
+  output$ECOS_table <- renderDT({
+    ECOS_results() |>
+      t() |>
       DT::datatable(extensions = c("Buttons"),
                     list(dom = 'tB', buttons = list("copy", "excel")))
   })

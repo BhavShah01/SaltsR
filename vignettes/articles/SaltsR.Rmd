@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-### Install and load 
+## Install and load 
 
 ``` r
 install.packages("pak")
@@ -20,7 +20,7 @@ pak::pak("BhavShah01/SaltsR")
 library(SaltsR)
 ```
 
-## Introduction
+## Application
 
 The SaltsR package provides an application to test its calculations. This interactive tool allows you to evaluate the package's output using ion chromatography data.
 

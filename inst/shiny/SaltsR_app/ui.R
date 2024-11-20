@@ -30,10 +30,8 @@ ui <- page_sidebar(
         uiOutput("sel_magnesium")
       ),
       fluidRow(
-      h5("Molar inputs for ECOS Runsalt"),
-      DT::dataTableOutput("salts_x_ECOS"),
-      h5("Weight inputs for ECOS Runsalt"),
-      DT::dataTableOutput("salts_wt_ECOS")
+      h5("Inputs for ECOS Runsalt: X = `mol` and wt = `weight`"),
+      DT::dataTableOutput("ECOS_table")
       ))
     ),
 )

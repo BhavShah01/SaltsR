@@ -369,22 +369,22 @@ fun_salt_balance <- function(
 
   # ECOS outputs
   # Eqn 8b. Mols
-  chloride_x_ECOS = chloride_x
-  nitrate_x_ECOS = nitrate_x
-  sulfate_x_ECOS = sulfate_x
-  sodium_x_ECOS = sodium_x
-  potassium_x_ECOS = potassium_x
-  calcium_x_ECOS = calcium_x
-  magnesium_x_ECOS = magnesium_x
+  chloride_ECOS_x = chloride_x
+  nitrate_ECOS_x = nitrate_x
+  sulfate_ECOS_x = sulfate_x
+  sodium_ECOS_x = sodium_x
+  potassium_ECOS_x = potassium_x
+  calcium_ECOS_x = calcium_x
+  magnesium_ECOS_x = magnesium_x
 
   # Eqn 10. Weights
-  chloride_wt_ECOS = chloride_wt_adj
-  nitrate_wt_ECOS = nitrate_wt_adj
-  sulfate_wt_ECOS = sulfate_wt_adj
-  sodium_wt_ECOS = sodium_wt_adj
-  potassium_wt_ECOS = potassium_wt_adj
-  calcium_wt_ECOS = calcium_wt_adj
-  magnesium_wt_ECOS = magnesium_wt_adj
+  chloride_ECOS_wt = chloride_wt_adj
+  nitrate_ECOS_wt = nitrate_wt_adj
+  sulfate_ECOS_wt = sulfate_wt_adj
+  sodium_ECOS_wt = sodium_wt_adj
+  potassium_ECOS_wt = potassium_wt_adj
+  calcium_ECOS_wt = calcium_wt_adj
+  magnesium_ECOS_wt = magnesium_wt_adj
 
   ECOS_pathway = Pathway
   ECOS_warnings = ifelse(
@@ -563,22 +563,22 @@ fun_salt_balance <- function(
 
     # ECOS outputs
     # Mols
-    sodium_x_ECOS,
-    potassium_x_ECOS,
-    magnesium_x_ECOS,
-    calcium_x_ECOS,
-    chloride_x_ECOS,
-    nitrate_x_ECOS,
-    sulfate_x_ECOS,
+    sodium_ECOS_x,
+    potassium_ECOS_x,
+    magnesium_ECOS_x,
+    calcium_ECOS_x,
+    chloride_ECOS_x,
+    nitrate_ECOS_x,
+    sulfate_ECOS_x,
 
     # Weight
-    sodium_wt_ECOS,
-    potassium_wt_ECOS,
-    magnesium_wt_ECOS,
-    calcium_wt_ECOS,
-    chloride_wt_ECOS,
-    nitrate_wt_ECOS,
-    sulfate_wt_ECOS,
+    sodium_ECOS_wt,
+    potassium_ECOS_wt,
+    magnesium_ECOS_wt,
+    calcium_ECOS_wt,
+    chloride_ECOS_wt,
+    nitrate_ECOS_wt,
+    sulfate_ECOS_wt,
 
     # Description and warnings
     ECOS_pathway,
