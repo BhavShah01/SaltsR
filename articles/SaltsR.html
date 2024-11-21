@@ -93,6 +93,182 @@ ion chromatography data.</p>
 <p>This will open the SaltsR application, where you can input your ion
 chromatography data and explore the package’s functionality.</p>
 </div>
+<div class="section level2">
+<h2 id="salt-balance-function">Salt balance function<a class="anchor" aria-label="anchor" href="#salt-balance-function"></a>
+</h2>
+<p>Use the function below with the following inputs to perform a salt
+balance. The full outputs of the function are shown underneath.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/fun_salt_balance.html">fun_salt_balance</a></span><span class="op">(</span>sample_name <span class="op">=</span> <span class="st">"Pathway 2"</span>,</span>
+<span>                 dry_g <span class="op">=</span> <span class="fl">0.801</span>,</span>
+<span>                 water_ml <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>                 chloride_ppm <span class="op">=</span> <span class="fl">14.651</span>,</span>
+<span>                 nitrate_ppm <span class="op">=</span> <span class="fl">17.339</span>,</span>
+<span>                 sulfate_ppm <span class="op">=</span> <span class="fl">39.923</span>,</span>
+<span>                 sodium_ppm <span class="op">=</span> <span class="fl">2.027</span>,</span>
+<span>                 potassium_ppm <span class="op">=</span> <span class="fl">2.04</span>,</span>
+<span>                 calcium_ppm <span class="op">=</span> <span class="fl">49.809</span>,</span>
+<span>                 magnesium_ppm <span class="op">=</span> <span class="fl">0.581</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/fun_salt_balance.html">fun_salt_balance</a></span><span class="op">(</span>sample_name <span class="op">=</span> <span class="st">"Pathway 2"</span>,</span>
+<span>                 dry_g <span class="op">=</span> <span class="fl">0.801</span>,</span>
+<span>                 water_ml <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>                 chloride_ppm <span class="op">=</span> <span class="fl">14.651</span>,</span>
+<span>                 nitrate_ppm <span class="op">=</span> <span class="fl">17.339</span>,</span>
+<span>                 sulfate_ppm <span class="op">=</span> <span class="fl">39.923</span>,</span>
+<span>                 sodium_ppm <span class="op">=</span> <span class="fl">2.027</span>,</span>
+<span>                 potassium_ppm <span class="op">=</span> <span class="fl">2.04</span>,</span>
+<span>                 calcium_ppm <span class="op">=</span> <span class="fl">49.809</span>,</span>
+<span>                 magnesium_ppm <span class="op">=</span> <span class="fl">0.581</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 1</span></span>
+<span><span class="co">#&gt; Columns: 145</span></span>
+<span><span class="co">#&gt; $ sample_name                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Pathway 2"</span></span>
+<span><span class="co">#&gt; $ dry_g                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.801</span></span>
+<span><span class="co">#&gt; $ water_ml                     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 100</span></span>
+<span><span class="co">#&gt; $ chloride_ppm                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 14.651</span></span>
+<span><span class="co">#&gt; $ nitrate_ppm                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 17.339</span></span>
+<span><span class="co">#&gt; $ sulfate_ppm                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 39.923</span></span>
+<span><span class="co">#&gt; $ sodium_ppm                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.027</span></span>
+<span><span class="co">#&gt; $ potassium_ppm                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.04</span></span>
+<span><span class="co">#&gt; $ calcium_ppm                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 49.809</span></span>
+<span><span class="co">#&gt; $ magnesium_ppm                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.581</span></span>
+<span><span class="co">#&gt; $ chloride_wt                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.001829089</span></span>
+<span><span class="co">#&gt; $ nitrate_wt                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.002164669</span></span>
+<span><span class="co">#&gt; $ sulfate_wt                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.004984145</span></span>
+<span><span class="co">#&gt; $ sodium_wt                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0002530587</span></span>
+<span><span class="co">#&gt; $ potassium_wt                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0002546816</span></span>
+<span><span class="co">#&gt; $ calcium_wt                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.006218352</span></span>
+<span><span class="co">#&gt; $ magnesium_wt                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 7.253433e-05</span></span>
+<span><span class="co">#&gt; $ total_wt                     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.01577653</span></span>
+<span><span class="co">#&gt; $ chloride_mEq                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 51.59237</span></span>
+<span><span class="co">#&gt; $ nitrate_mEq                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 34.91126</span></span>
+<span><span class="co">#&gt; $ sulfate_mEq                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 103.7672</span></span>
+<span><span class="co">#&gt; $ sodium_mEq                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 11.00745</span></span>
+<span><span class="co">#&gt; $ potassium_mEq                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.51388</span></span>
+<span><span class="co">#&gt; $ calcium_mEq                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 310.3125</span></span>
+<span><span class="co">#&gt; $ magnesium_mEq                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.968676</span></span>
+<span><span class="co">#&gt; $ total_mEq_anions             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 190.2708</span></span>
+<span><span class="co">#&gt; $ total_mEq_cations            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 333.8025</span></span>
+<span><span class="co">#&gt; $ charge_imbalance_initial     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 143.5317</span></span>
+<span><span class="co">#&gt; $ imbalance_allocation         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "dExcess Cations"</span></span>
+<span><span class="co">#&gt; $ Pathway1                     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> FALSE</span></span>
+<span><span class="co">#&gt; $ Pathway2                     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> TRUE</span></span>
+<span><span class="co">#&gt; $ Pathway                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Pathway 2"</span></span>
+<span><span class="co">#&gt; $ chloride_mEq_Path1           <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA</span></span>
+<span><span class="co">#&gt; $ nitrate_mEq_Path1            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA</span></span>
+<span><span class="co">#&gt; $ sulfate_mEq_Path1            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA</span></span>
+<span><span class="co">#&gt; $ sodium_mEq_Path1             <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA</span></span>
+<span><span class="co">#&gt; $ potassium_mEq_Path1          <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA</span></span>
+<span><span class="co">#&gt; $ calcium_mEq_Path1            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA</span></span>
+<span><span class="co">#&gt; $ magnesium_mEq_Path1          <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA</span></span>
+<span><span class="co">#&gt; $ chloride_mEq_Path2Ca         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 51.59237</span></span>
+<span><span class="co">#&gt; $ nitrate_mEq_Path2Ca          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 34.91126</span></span>
+<span><span class="co">#&gt; $ sulfate_mEq_Path2Ca          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 103.7672</span></span>
+<span><span class="co">#&gt; $ sodium_mEq_Path2Ca           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 11.00745</span></span>
+<span><span class="co">#&gt; $ potassium_mEq_Path2Ca        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.51388</span></span>
+<span><span class="co">#&gt; $ calcium_mEq_Path2Ca          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 166.7808</span></span>
+<span><span class="co">#&gt; $ magnesium_mEq_Path2Ca        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.968676</span></span>
+<span><span class="co">#&gt; $ total_mEq_anions_Path2Ca     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 190.2708</span></span>
+<span><span class="co">#&gt; $ total_mEq_cations_Path2Ca    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 190.2708</span></span>
+<span><span class="co">#&gt; $ charge_imbalance_CaAdj       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ chloride_mEq_Path2Mg         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 51.59237</span></span>
+<span><span class="co">#&gt; $ nitrate_mEq_Path2Mg          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 34.91126</span></span>
+<span><span class="co">#&gt; $ sulfate_mEq_Path2Mg          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 103.7672</span></span>
+<span><span class="co">#&gt; $ sodium_mEq_Path2Mg           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 11.00745</span></span>
+<span><span class="co">#&gt; $ potassium_mEq_Path2Mg        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.51388</span></span>
+<span><span class="co">#&gt; $ calcium_mEq_Path2Mg          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 166.7808</span></span>
+<span><span class="co">#&gt; $ magnesium_mEq_Path2Mg        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.968676</span></span>
+<span><span class="co">#&gt; $ total_mEq_anions_Path2Mg     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 190.2708</span></span>
+<span><span class="co">#&gt; $ total_mEq_cations_Path2Mg    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 190.2708</span></span>
+<span><span class="co">#&gt; $ charge_imbalance_MgAdj       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ chloride_mEq_Path2Na         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 51.59237</span></span>
+<span><span class="co">#&gt; $ nitrate_mEq_Path2Na          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 34.91126</span></span>
+<span><span class="co">#&gt; $ sulfate_mEq_Path2Na          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 103.7672</span></span>
+<span><span class="co">#&gt; $ sodium_mEq_Path2Na           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 11.00745</span></span>
+<span><span class="co">#&gt; $ potassium_mEq_Path2Na        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.51388</span></span>
+<span><span class="co">#&gt; $ calcium_mEq_Path2Na          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 166.7808</span></span>
+<span><span class="co">#&gt; $ magnesium_mEq_Path2Na        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.968676</span></span>
+<span><span class="co">#&gt; $ total_mEq_anions_Path2Na     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 190.2708</span></span>
+<span><span class="co">#&gt; $ total_mEq_cations_Path2Na    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 190.2708</span></span>
+<span><span class="co">#&gt; $ charge_imbalance_NaAdj       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ chloride_mEq_Path2K          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 51.59237</span></span>
+<span><span class="co">#&gt; $ nitrate_mEq_Path2K           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 34.91126</span></span>
+<span><span class="co">#&gt; $ sulfate_mEq_Path2K           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 103.7672</span></span>
+<span><span class="co">#&gt; $ sodium_mEq_Path2K            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 11.00745</span></span>
+<span><span class="co">#&gt; $ potassium_mEq_Path2K         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.51388</span></span>
+<span><span class="co">#&gt; $ calcium_mEq_Path2K           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 166.7808</span></span>
+<span><span class="co">#&gt; $ magnesium_mEq_Path2K         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.968676</span></span>
+<span><span class="co">#&gt; $ total_mEq_anions_Path2K      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 190.2708</span></span>
+<span><span class="co">#&gt; $ total_mEq_cations_Path2K     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 190.2708</span></span>
+<span><span class="co">#&gt; $ charge_imbalance_KAdj        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ chloride_mEq_adj             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 51.59237</span></span>
+<span><span class="co">#&gt; $ nitrate_mEq_adj              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 34.91126</span></span>
+<span><span class="co">#&gt; $ sulfate_mEq_adj              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 103.7672</span></span>
+<span><span class="co">#&gt; $ sodium_mEq_adj               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 11.00745</span></span>
+<span><span class="co">#&gt; $ potassium_mEq_adj            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.51388</span></span>
+<span><span class="co">#&gt; $ calcium_mEq_adj              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 166.7808</span></span>
+<span><span class="co">#&gt; $ magnesium_mEq_adj            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.968676</span></span>
+<span><span class="co">#&gt; $ gypsum_content_limit         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 103.7672</span></span>
+<span><span class="co">#&gt; $ chloride_mEq_adj_SO4         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 51.59237</span></span>
+<span><span class="co">#&gt; $ nitrate_mEq_adj_SO4          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 34.91126</span></span>
+<span><span class="co">#&gt; $ sulfate_mEq_adj_SO4          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ sodium_mEq_adj_SO4           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 11.00745</span></span>
+<span><span class="co">#&gt; $ potassium_mEq_adj_SO4        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.51388</span></span>
+<span><span class="co">#&gt; $ calcium_mEq_adj_SO4          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 63.01362</span></span>
+<span><span class="co">#&gt; $ magnesium_mEq_adj_SO4        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.968676</span></span>
+<span><span class="co">#&gt; $ charge_imbalance_final       <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> TRUE</span></span>
+<span><span class="co">#&gt; $ chloride_molkg               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.05159237</span></span>
+<span><span class="co">#&gt; $ nitrate_molkg                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.03491126</span></span>
+<span><span class="co">#&gt; $ sulfate_molkg                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ sodium_molkg                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.01100745</span></span>
+<span><span class="co">#&gt; $ potassium_molkg              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00651388</span></span>
+<span><span class="co">#&gt; $ calcium_molkg                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.03150681</span></span>
+<span><span class="co">#&gt; $ magnesium_mmolkg             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.002984338</span></span>
+<span><span class="co">#&gt; $ chloride_x                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.3724648</span></span>
+<span><span class="co">#&gt; $ nitrate_x                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.2520376</span></span>
+<span><span class="co">#&gt; $ sulfate_x                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ sodium_x                     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.07946692</span></span>
+<span><span class="co">#&gt; $ potassium_x                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.04702616</span></span>
+<span><span class="co">#&gt; $ calcium_x                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.2274596</span></span>
+<span><span class="co">#&gt; $ magnesium_x                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.02154506</span></span>
+<span><span class="co">#&gt; $ calcium_fraction             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.4299899</span></span>
+<span><span class="co">#&gt; $ magnesium_fraction           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ sodium_fraction              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ potassium_fraction           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ chloride_wt_adj              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.001829089</span></span>
+<span><span class="co">#&gt; $ nitrate_wt_adj               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.002164669</span></span>
+<span><span class="co">#&gt; $ sulfate_wt_adj               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ sodium_wt_adj                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0002530587</span></span>
+<span><span class="co">#&gt; $ potassium_wt_adj             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0002546816</span></span>
+<span><span class="co">#&gt; $ calcium_wt_adj               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00126273</span></span>
+<span><span class="co">#&gt; $ magnesium_wt_adj             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 7.253433e-05</span></span>
+<span><span class="co">#&gt; $ total_wt_adj                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.005836762</span></span>
+<span><span class="co">#&gt; $ total_wt_adj_gypsum          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.009939767</span></span>
+<span><span class="co">#&gt; $ gypsum_content               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.007063535</span></span>
+<span><span class="co">#&gt; $ saturation_gypsum_content    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.02643875</span></span>
+<span><span class="co">#&gt; $ total_ion_content            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.002876232</span></span>
+<span><span class="co">#&gt; $ sodium_potassium_content_adj <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ magnessium_content_adj       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ calcium_content_adj          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.002876232</span></span>
+<span><span class="co">#&gt; $ hypothetical_CO3             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ sodium_ECOS_mol              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.07946692</span></span>
+<span><span class="co">#&gt; $ potassium_ECOS_mol           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.04702616</span></span>
+<span><span class="co">#&gt; $ magnesium_ECOS_mol           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.02154506</span></span>
+<span><span class="co">#&gt; $ calcium_ECOS_mol             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.2274596</span></span>
+<span><span class="co">#&gt; $ chloride_ECOS_mol            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.3724648</span></span>
+<span><span class="co">#&gt; $ nitrate_ECOS_mol             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.2520376</span></span>
+<span><span class="co">#&gt; $ sulfate_ECOS_mol             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ sodium_ECOS_weight           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0002530587</span></span>
+<span><span class="co">#&gt; $ potassium_ECOS_weight        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0002546816</span></span>
+<span><span class="co">#&gt; $ magnesium_ECOS_weight        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 7.253433e-05</span></span>
+<span><span class="co">#&gt; $ calcium_ECOS_weight          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00126273</span></span>
+<span><span class="co">#&gt; $ chloride_ECOS_weight         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.001829089</span></span>
+<span><span class="co">#&gt; $ nitrate_ECOS_weight          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.002164669</span></span>
+<span><span class="co">#&gt; $ sulfate_ECOS_weight          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span></span>
+<span><span class="co">#&gt; $ ECOS_pathway                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Pathway 2"</span></span>
+<span><span class="co">#&gt; $ ECOS_warnings                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "No warnings"</span></span></code></pre></div>
+</div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
