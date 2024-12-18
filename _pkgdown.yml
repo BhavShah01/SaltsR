@@ -8,6 +8,7 @@ reference:
   desc: Perform salt balance for ECOS Runsalt
   contents:
     - fun_salt_balance
+    - tidyRunsalt
 - title: SaltsR Application
   desc: SaltsR_app to peform salt balance for ECOS Runsalt
   contents:

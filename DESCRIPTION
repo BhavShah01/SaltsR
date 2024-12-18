@@ -24,10 +24,10 @@ Suggests:
     testthat (>= 3.0.0),
     bslib
 Imports:
-    rlang,
     shiny,
-    ggplot2,
     dplyr,
-    tibble
+    tibble,
+    readr,
+    tidyr
 Depends: 
     R (>= 2.10)
