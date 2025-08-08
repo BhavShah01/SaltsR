@@ -4,10 +4,16 @@
 \alias{tidyRunsalt}
 \title{Read and tidy Runsalt output data}
 \usage{
-tidyRunsalt(file_path)
+tidyRunsalt(file_path, X_col = "RH", Y_col = "mol", Temp_value = 20)
 }
 \arguments{
 \item{file_path}{A character string specifying the path to the Runsalt output file.}
+
+\item{X_col}{A character string specifying the X column variable. Defaul is "RH".}
+
+\item{Y_col}{A character string specifying the Y column variable. Defaul is "mol".}
+
+\item{Temp_value}{A numeric specifying the temperature (C). Default is 20.}
 }
 \value{
 A tibble with columns:

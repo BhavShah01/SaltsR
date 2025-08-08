@@ -9,6 +9,7 @@ reference:
   contents:
     - fun_salt_balance
     - tidyRunsalt
+    - tidyRunsaltFolder
 - title: SaltsR Application
   desc: SaltsR_app to peform salt balance for ECOS Runsalt
   contents:

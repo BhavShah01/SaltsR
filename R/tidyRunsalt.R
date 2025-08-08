@@ -7,6 +7,9 @@
 #'
 #'
 #' @param file_path A character string specifying the path to the Runsalt output file.
+#' @param X_col A character string specifying the X column variable. Defaul is "RH".
+#' @param Y_col A character string specifying the Y column variable. Defaul is "mol".
+#' @param Temp_value A numeric specifying the temperature (C). Default is 20.
 #'
 #' @return A tibble with columns:
 #'
@@ -32,7 +35,7 @@
 #'
 #'
 #'
-tidyRunsalt <- function(file_path) {
+tidyRunsalt <- function(file_path, X_col = "RH", Y_col = "mol", Temp_value = 20) {
   FILENAME = basename(file_path)
 
   runsalt_output <-
@@ -42,8 +45,11 @@ tidyRunsalt <- function(file_path) {
     drop_na(value) |>
     pivot_wider(names_from = Variable, values_from = value) |>
     unnest(c(X, Y)) |>
-    mutate(filename = FILENAME, RH = X, mol = Y) |>
-    select(-X, -Y)
+    mutate(
+      filename = FILENAME,
+      !!X_col := X,
+      !!Y_col := Y,
+      Temp = Temp_value)
 
   return(runsalt_output)
 }
