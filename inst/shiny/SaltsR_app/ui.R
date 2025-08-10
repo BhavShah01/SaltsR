@@ -5,7 +5,7 @@ library(bslib)
 
 ui <- page_sidebar(
   title = "SaltsR - Tool for ECOS Runsalt",
-  theme = bs_theme(bootswatch = "shiny"),
+  theme = bs_theme(bootswatch = "bootstrap"),
   sidebar = sidebar(
     title = "Salt balance",
     uiOutput("sel_sample"),
@@ -20,7 +20,12 @@ ui <- page_sidebar(
       uiOutput("sel_magnesium"),
       uiOutput("sel_sulfate"),
       uiOutput("sel_calcium"),
-
+      br(),
+      tags$a(
+        "PREDICT tools",
+        href = "https://predict.kikirpa.be/index.php/tools/",
+        target = "_blank"
+      )
     )
   ),
 
