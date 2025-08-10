@@ -14,6 +14,8 @@ reference:
   desc: SaltsR_app to peform salt balance for ECOS Runsalt
   contents:
     - runSaltsR_app
+    - shiny_dataUploadServer
+    - shiny_dataUploadUI
 - title: Datasets
   desc: Datasets in the package
   contents:

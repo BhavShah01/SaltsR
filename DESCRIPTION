@@ -12,7 +12,7 @@ Authors@R: c(
   )
 Maintainer: Bhavesh Shah <bhaveshshah01@gmail.com>
 Description: Tools for the analysis of salt formation data.
-License: What license is it under?
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 URL: https://bhavshah01.github.io/SaltsR/
@@ -28,6 +28,9 @@ Imports:
     dplyr,
     tibble,
     readr,
-    tidyr
+    tidyr,
+    ggplot2,
+    ggrepel,
+    DT
 Depends: 
     R (>= 2.10)

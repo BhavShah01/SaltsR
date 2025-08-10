@@ -26,7 +26,7 @@ ui <- page_sidebar(
 
   navset_card_tab(
     title = "Results",
-    height = 300,
+    height = 600,
     nav_panel(
       "Input for Runsalt",
       card_title("Input for ECOS Runsalt"),
@@ -39,27 +39,41 @@ ui <- page_sidebar(
              textOutput("salts_messages"),
              ),
         card(full_screen = TRUE,
-             card_header("Input results"),
+             card_header("Salt ion correction"),
              card_body(
                class = "p-0",
-               plotOutput("salts_results_graph"),
+               plotOutput("salts_corrected_graph"),
                downloadButton("salts_download", "Download complete results"),
                )
              ),
       )),
     nav_panel(
       "Output from Runsalt",
-      card_title("Output from Runsalt"),
-      "The output from Runsalt can uploaded.",
+      fileInput("ECOS_file_upload", "Choose a Runsalt Output File"),
       layout_column_wrap(
         # width = 1/2,
         height = 300,
+
         card(full_screen = TRUE,
              card_header("ECOS output"),
-             "Under development..."),
+             DT::dataTableOutput("ECOSoutput_table")
+             ),
         card(full_screen = TRUE,
-             card_header("Development..."),
-             card_body(class = "p-0", "Under development..."))
+             card_header("ECOS output2"),
+             card_body(class = "p-0", plotOutput("ECOSoutput_graph")))
+      )),
+    nav_panel(
+      "Help",
+      tags$a(
+        "Link to tools KIK-IRPA PREDICT project",
+        href = "https://predict.kikirpa.be/index.php/tools/",
+        target = "_blank"
+      ),
+      layout_column_wrap(
+        height = 300,
+        card(full_screen = TRUE,
+             card_header("ECOS output"),
+             "Under development...")
       ))
   )
 )
