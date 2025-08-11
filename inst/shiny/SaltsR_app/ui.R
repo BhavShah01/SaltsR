@@ -21,11 +21,7 @@ ui <- page_sidebar(
       uiOutput("sel_sulfate"),
       uiOutput("sel_calcium"),
       br(),
-      tags$a(
-        "PREDICT tools",
-        href = "https://predict.kikirpa.be/index.php/tools/",
-        target = "_blank"
-      )
+      markdown("[PREDICT tools](https://predict.kikirpa.be/index.php/tools/)")
     )
   ),
 
@@ -42,38 +38,47 @@ ui <- page_sidebar(
              card_header("Input for Runsalt"),
              DT::dataTableOutput("ECOS_table"),
              textOutput("salts_messages"),
-             ),
+        ),
         card(full_screen = TRUE,
              card_header("Salt ion correction"),
              card_body(
                class = "p-0",
                plotOutput("salts_corrected_graph"),
                downloadButton("salts_download", "Download complete results"),
-               )
-             ),
+             )
+        ),
       )),
     nav_panel(
       "Output from Runsalt",
       fileInput("ECOS_file_upload", "Choose a Runsalt Output File"),
       layout_column_wrap(
-        # width = 1/2,
         height = 300,
-
         card(full_screen = TRUE,
              card_header("ECOS output"),
              DT::dataTableOutput("ECOSoutput_table")
-             ),
+        ),
         card(full_screen = TRUE,
              card_header("ECOS output2"),
              card_body(class = "p-0", plotOutput("ECOSoutput_graph")))
       )),
     nav_panel(
+      "Worldmet Weather data",
+      layout_column_wrap(
+        height = 300,
+        card(
+          uiOutput("select_worldmet_sites"),
+          uiOutput("select_lat"),
+          uiOutput("select_lon"),
+          uiOutput("select_worldmet_year"),
+          tableOutput("worldmet_siteTable")),
+        card(
+          fill = TRUE,
+          downloadButton("worldmet_download", "Download Weather Data"),
+          leaflet::leafletOutput("worldmet_leafletmap")),
+      )),
+    nav_panel(
       "Help",
-      tags$a(
-        "Link to tools KIK-IRPA PREDICT project",
-        href = "https://predict.kikirpa.be/index.php/tools/",
-        target = "_blank"
-      ),
+      markdown("Link to KIK-IRPA PREDICT [tools](https://predict.kikirpa.be/index.php/tools/)"),
       layout_column_wrap(
         height = 300,
         card(full_screen = TRUE,

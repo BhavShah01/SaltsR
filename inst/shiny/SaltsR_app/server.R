@@ -10,10 +10,16 @@ library(DT)
 library(ggplot2)
 library(ggrepel)
 library(SaltsR)
+library(leaflet)
+library(worldmet)
+library(shinyWidgets)
 
 
 server <- function(input, output) {
   # bs_themer()
+
+
+  # ECOS input ----
 
   output$sel_sample <- renderUI({
     textInput("sel_sample", "Sample Input", value = "Sample name")
@@ -127,12 +133,12 @@ server <- function(input, output) {
     ECOS_tidy() |>
       group_by(Salt) |>
       mutate(
-        Crystallisation = ifelse(X == max(X, na.rm = TRUE), X, NA))
-      #   diffY = Y - lag(Y, 1),
-      #   diffY2 = diffY - lag(diffY, 1),
-      #   RH_eqm = ifelse(diffY2 > 0, lag(X, 1), ""),
-      #   RH_eqm = ifelse(diffY2 == "NA", NA, RH_eqm)) |>
-      # dplyr::select(-diffY, -diffY2)
+        Crystallisation = ifelse(X == max(X, na.rm = TRUE), X, NA),
+        diffY = Y - lag(Y, 1),
+        diffY2 = diffY - lag(diffY, 1),
+        RH_eqm = ifelse(diffY2 > 0, lag(X, 1), ""),
+        RH_eqm = ifelse(diffY2 == "NA", NA, RH_eqm)) |>
+      dplyr::select(-diffY, -diffY2)
   })
 
   # Data table
@@ -157,5 +163,69 @@ server <- function(input, output) {
            caption = "Price (2000) and Bionda (2005)") +
       theme_classic(base_size = 16)
   })
+
+
+  # Worldmet weather data ----
+
+  output$select_worldmet_year <- renderUI({
+    shinyWidgets::airYearpickerInput(
+      "select_worldmet_year", "Select years of data", value = "2025-01-01",
+      multiple = TRUE, clearButton = TRUE)
+  })
+
+  output$select_lat <- renderUI({
+    numericInput("select_lat", "Latitude", value = 51.5)
+  })
+
+  output$select_lon <- renderUI({
+    numericInput("select_lon", "Longitude", value = -0.17)
+  })
+
+  worldmet_sites <- reactive({
+    worldmet::getMeta(
+      lat = input$select_lat,
+      lon = input$select_lon)
+  })
+
+  worldmet_site_names <- reactive({
+    worldmet_sites() |> pull(station)
+  })
+
+  output$select_worldmet_sites <- renderUI({
+    selectInput("select_worldmet_sites", "Select Station", multiple = FALSE,
+                choices = worldmet_site_names(),
+                selected = worldmet_site_names()[1])
+  })
+
+  worldmet_site_code <- reactive({
+    worldmet_sites() |>
+      filter(station %in% input$select_worldmet_sites) |>
+      pull(code)
+  })
+
+  worldmet_data <- reactive({
+    worldmet::importNOAA(
+      code = c(worldmet_site_code()),
+      year = lubridate::year(input$select_worldmet_year))
+  })
+
+  output$worldmet_leafletmap <- renderLeaflet({
+    worldmet::getMeta(
+      plot = TRUE,
+      site = c(worldmet_site_names()),
+      lat = input$select_lat, lon = input$select_lon
+      )
+  })
+
+  output$worldmet_siteTable <- renderTable({
+    worldmet_sites()
+  })
+
+  output$locationdata_rawDownload <- downloadHandler(
+    filename = "worldmet_data.csv",
+    content = function(con) {
+      readr::write_excel_csv(worldmet_data(), con)
+    })
+
 
 }
