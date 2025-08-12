@@ -116,16 +116,22 @@ server <- function(input, output) {
       theme_classic(base_size = 16)
   })
 
+
+
   # ECOS output ----
 
   # ECOS output upload
   ECOS_tidy <- reactive({
     req(input$ECOS_file_upload)
-
+    #
     ECOS_file <- input$ECOS_file_upload
     ext <- tools::file_ext(ECOS_file$datapath)
-    validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
-    tidyRunsalt(ECOS_file$datapath)
+    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
+    tidyRunsalt(ECOS_file$datapath, Temp_value = input$ECOS_temperature)
+  })
+
+  output$ECOS_temperature <- renderUI({
+    numericInput("ECOS_temperature", "2) Enter Temperature (C)", value = 20)
   })
 
   ECOS_output <- reactive({
@@ -145,8 +151,9 @@ server <- function(input, output) {
   output$ECOSoutput_table <- DT::renderDataTable({
     req(ECOS_output())
     ECOS_output() |>
-      DT::datatable(extensions = c("Buttons"),
-                    list(dom = 'Bt', buttons = list("excel"), pageLength = nrow(ECOS_output())))
+      DT::datatable(
+        extensions = c("Buttons"),
+        list(dom = 'Bt', buttons = list("excel"), pageLength = nrow(ECOS_output())))
   })
 
   # Graph
@@ -158,9 +165,159 @@ server <- function(input, output) {
       geom_point(alpha = 0.7, size = 1) +
       ggrepel::geom_text_repel(aes(label = Crystallisation)) +
       labs(x = "Humidity (%RH)", y = "Amount of substance (mol)",
-           title = NULL,
+           title = "ECOS model output",
            subtitle = paste0("Temperature ", unique(ECOS_output()$Temp), "C"),
            caption = "Price (2000) and Bionda (2005)") +
+      theme_classic(base_size = 16)
+  })
+
+
+  # ECOS output (multiple) ----
+
+  ECOS_tidy00C <- reactive({
+    req(input$ECOS_upload00C)
+    ECOS_file00 <- input$ECOS_upload00C
+    ext <- tools::file_ext(ECOS_file00$datapath)
+    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
+    tidyRunsalt(ECOS_file00$datapath, Temp_value = 0)
+  })
+  ECOS_tidy05C <- reactive({
+    req(input$ECOS_upload05C)
+    ECOS_file05 <- input$ECOS_upload05C
+    ext <- tools::file_ext(ECOS_file05$datapath)
+    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
+    tidyRunsalt(ECOS_file05$datapath, Temp_value = 5)
+  })
+  ECOS_tidy10C <- reactive({
+    req(input$ECOS_upload10C)
+    ECOS_file10 <- input$ECOS_upload10C
+    ext <- tools::file_ext(ECOS_file10$datapath)
+    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
+    tidyRunsalt(ECOS_file10$datapath, Temp_value = 10)
+  })
+  ECOS_tidy15C <- reactive({
+    req(input$ECOS_upload015C)
+    ECOS_file15 <- input$ECOS_upload15C
+    ext <- tools::file_ext(ECOS_file15$datapath)
+    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
+    tidyRunsalt(ECOS_file15$datapath, Temp_value = 15)
+  })
+  ECOS_tidy20C <- reactive({
+    req(input$ECOS_upload20C)
+    ECOS_file20 <- input$ECOS_upload20C
+    ext <- tools::file_ext(ECOS_file20$datapath)
+    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
+    tidyRunsalt(ECOS_file20$datapath, Temp_value = 20)
+  })
+  ECOS_tidy25C <- reactive({
+    req(input$ECOS_upload025C)
+    ECOS_file25 <- input$ECOS_upload25C
+    ext <- tools::file_ext(ECOS_file25$datapath)
+    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
+    tidyRunsalt(ECOS_file25$datapath, Temp_value = 25)
+  })
+  ECOS_tidy30C <- reactive({
+    req(input$ECOS_upload30C)
+    ECOS_file30 <- input$ECOS_upload30C
+    ext <- tools::file_ext(ECOS_file30$datapath)
+    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
+    tidyRunsalt(ECOS_file30$datapath, Temp_value = 30)
+  })
+  ECOS_tidy35C <- reactive({
+    req(input$ECOS_upload35C)
+    ECOS_file <- input$ECOS_upload35C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
+    tidyRunsalt(ECOS_file35$datapath, Temp_value = 35)
+  })
+  ECOS_tidy40C <- reactive({
+    req(input$ECOS_upload40C)
+    ECOS_file40 <- input$ECOS_upload40C
+    ext <- tools::file_ext(ECOS_file40$datapath)
+    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
+    tidyRunsalt(ECOS_file40$datapath, Temp_value = 40)
+  })
+
+  ECOS_multiple <- reactive({
+    lst <- list(
+      `00C` = purrr::safely(~.x) (ECOS_tidy00C())$result,
+      `05C` = purrr::safely(~.x) (ECOS_tidy05C())$result,
+      `10C` = purrr::safely(~.x) (ECOS_tidy10C())$result,
+      `15C` = purrr::safely(~.x) (ECOS_tidy15C())$result,
+      `20C` = purrr::safely(~.x) (ECOS_tidy20C())$result,
+      `25C` = purrr::safely(~.x) (ECOS_tidy25C())$result,
+      `30C` = purrr::safely(~.x) (ECOS_tidy30C())$result,
+      `35C` = purrr::safely(~.x) (ECOS_tidy35C())$result,
+      `40C` = purrr::safely(~.x) (ECOS_tidy40C())$result
+    )
+    lst <- purrr::compact(lst)
+    if (length(lst) == 0) return(NULL)
+    dplyr::bind_rows(lst, .id = "temp_label")
+  })
+
+
+  # Data table multiple
+  output$ECOSmultiple_table <- DT::renderDataTable({
+    req(ECOS_multiple())
+    ECOS_multiple() |>
+      DT::datatable(
+        extensions = c("Buttons"),
+        list(dom = 'Bt', buttons = list("excel"), pageLength = nrow(ECOS_multiple())))
+  })
+
+
+  # TRH data
+  TRHdata <- reactive({
+    req(input$TRH_upload)
+    TRH_file <- input$TRH_upload
+    ext <- tools::file_ext(TRH_file$datapath)
+    read_csv(TRH_file$datapath,
+             col_types = cols(DATE = col_datetime(format = "%Y-%m-%d %H:%M:%S")))
+  })
+  output$TRH_table <- DT::renderDataTable({
+    req(TRHdata())
+    TRHdata() |>
+      DT::datatable(
+        extensions = c("Buttons"),
+        list(dom = 'Bt', buttons = list("excel")))
+  })
+
+
+  # Graph multiple
+  output$ECOSmultiple_graph <- renderPlot({
+    req(ECOS_multiple())
+
+    ecos_data <- ECOS_multiple() |>
+      group_by(Salt, Temp, filename) |>
+      mutate(RH_lower = min(RH), RH_upper = max(RH))
+
+    p <-
+      ggplot(ecos_data, aes(x = Temp, ymin = RH_lower, ymax = RH_upper, fill = Salt)) +
+      geom_ribbon(alpha = 0.2) +
+      coord_cartesian(ylim = c(0, 100)) +
+      labs(title = NULL, x = "Temperature (°C)", y = "Humidity (%RH)") +
+      facet_wrap(~Salt) +
+      theme_classic(base_size = 16)
+
+    return(p)
+  })
+
+  # Graph multiple + TRH data
+  output$ECOSmultiple_TRHgraph <- renderPlot({
+    req(ECOS_multiple())
+    req(TRHdata())
+
+    ecos_TRHdata <-
+      cross_join(ECOS_multiple(), TRHdata()) |>
+      group_by(Salt, Temp, filename) |>
+      mutate(RH_lower = min(RH), RH_upper = max(RH))
+
+    ecos_TRHdata |>
+      ggplot(aes(x = Temp, ymin = RH_lower, ymax = RH_upper, fill = Salt)) +
+      geom_ribbon(alpha = 0.2) +
+      geom_point(aes(x = TEMPERATURE, y = HUMIDITY), alpha = 0.7, colour = "plum") +
+      coord_cartesian(xlim = c(0, 40), ylim = c(0, 100)) +
+      labs(title = NULL, x = "Temperature (°C)", y = "Humidity (%RH)") +
       theme_classic(base_size = 16)
   })
 
@@ -192,6 +349,7 @@ server <- function(input, output) {
   })
 
   output$select_worldmet_sites <- renderUI({
+    req(worldmet_site_names())
     selectInput("select_worldmet_sites", "Select Station", multiple = FALSE,
                 choices = worldmet_site_names(),
                 selected = worldmet_site_names()[1])
@@ -199,17 +357,17 @@ server <- function(input, output) {
 
   worldmet_site_code <- reactive({
     worldmet_sites() |>
-      filter(station %in% input$select_worldmet_sites) |>
+      filter(station == input$select_worldmet_sites) |>
       pull(code)
   })
 
-  worldmet_data <- reactive({
-    worldmet::importNOAA(
-      code = c(worldmet_site_code()),
-      year = lubridate::year(input$select_worldmet_year))
+  output$worldmet_siteTable <- renderTable({
+    req(worldmet_sites())
+    worldmet_sites()
   })
 
   output$worldmet_leafletmap <- renderLeaflet({
+    req(worldmet_site_names())
     worldmet::getMeta(
       plot = TRUE,
       site = c(worldmet_site_names()),
@@ -217,15 +375,19 @@ server <- function(input, output) {
       )
   })
 
-  output$worldmet_siteTable <- renderTable({
-    worldmet_sites()
+  worldmet_data <- reactive({
+    worldmet::importNOAA(
+      code = worldmet_site_code(),
+      year = lubridate::year(input$select_worldmet_year))
   })
 
   output$locationdata_rawDownload <- downloadHandler(
-    filename = "worldmet_data.csv",
-    content = function(con) {
-      readr::write_excel_csv(worldmet_data(), con)
-    })
+    filename = function() { "worldmet_data.csv" },
+    content = function(file) {
+      readr::write_excel_csv(worldmet_data(), file)
+    }
+  )
+
 
 
 }
