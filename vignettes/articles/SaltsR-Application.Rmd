@@ -19,24 +19,6 @@ library(ggplot2)
 ```
 
 
-- [Runsalt software](http://science.sdf-eu.org/runsalt/): Prediction of salt mixture behaviour under changing climate conditions using the ECOS thermodynamic model.
-- [KIK-IRPA PREDICT tools](https://predict.kikirpa.be/index.php/tools/): Suite of calculators for hygroscopic moisture content, ion balance, and climate data visualisation.
-- [SaltsR R package](https://bhavshah01.github.io/SaltsR/): Data science tools in development for interoperability with Runsalt software.
-
-This tool is designed for data analysis and modelling of salt behaviour in cultural heritage materials. Calculations are based on [Godts et al. 2022](https://www.nature.com/articles/s41597-022-01445-9).
-
-For the most up-to-date calculations, please use the [Salts Content Calculator](https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/).
-
-## Typical Workflow
-
--   Upload ion chromatography data.
-
--   Return output for the Runsalt application.
-
--   Review visualisations and tables.
-
--   Export analytical results.
-
 ## Online
 
 You can use the interactive SaltsR application in a web browser:
