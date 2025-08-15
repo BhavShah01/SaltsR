@@ -4,25 +4,57 @@
 # SaltsR
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
-SaltsR is a data science tool to aid scientists, researchers,
-conservators and managers of cultural heritage that are interested in
-protecting heritage from salt weathering.
+SaltsR is a data science tool designed to support scientists,
+researchers, conservators, and heritage managers in protecting cultural
+heritage from salt weathering. It corrects ion chromatography data for
+use with the Runsalt application (Price 2000; Bionda 2005), based on
+calculations from [Godts et
+al. 2022](https://www.nature.com/articles/s41597-022-01445-9).
+Additionally, Runsalt output files can be uploaded to the tool to
+generate graphical visualisations.
 
-KIK-IRPA PREDICT: <https://predict.kikirpa.be/>
+For the most up-to-date calculations, please use the [Salts Content
+Calculator](https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/).
 
-Details of the calculation:
-<https://www.nature.com/articles/s41597-022-01445-9>
+- [Runsalt software](http://science.sdf-eu.org/runsalt/): Prediction of
+  salt mixture behaviour under changing climate conditions using the
+  ECOS thermodynamic model.
+- [KIK-IRPA PREDICT tools](https://predict.kikirpa.be/index.php/tools/):
+  Suite of calculators for hygroscopic moisture content, ion balance,
+  and climate data visualisation.
+- [SaltsR R package](https://bhavshah01.github.io/SaltsR/): Data science
+  tools in development for interoperability with Runsalt software.
+- [SaltsR Online
+  Application](https://oceanonline.shinyapps.io/SaltsRApp/): Online
+  version of SaltsR to use the package’s functionality.
 
-Salt Wiki: <https://www.saltwiki.net/index.php/Home>
+**Disclaimer** - this tool is under development and the authour does not
+take any responsibilty.
 
-ECOS – RUNSALT : <http://science.sdf-eu.org/runsalt/>
+## Typical Workflow
 
-MDCS / Monument Diagnosis and Conservation System :
-<https://mdcs.monumentenkennis.nl/>
+- Upload ion chromatography data for the Runsalt application.
 
-## Installation
+- Return output for the Runsalt application.
+
+- Review visualisations and tables.
+
+- Export analytical results.
+
+## Online
+
+Online version of SaltsR package. You can use the interactive SaltsR
+application in a web browser:
+
+- [SaltsR Online
+  Application](https://oceanonline.shinyapps.io/SaltsRApp/)
+
+<https://oceanonline.shinyapps.io/SaltsRApp/>
+
+## SaltsR Installation
 
 You can install the development version of SaltsR from
 [GitHub](https://github.com/) with:
@@ -35,3 +67,18 @@ pak::pak("BhavShah01/SaltsR")
 ``` r
 library(SaltsR)
 ```
+
+## Load the Application
+
+The SaltsR package provides an application to test its calculations.
+This interactive tool allows you to evaluate the package’s output using
+ion chromatography data.
+
+To launch the application, simply run the following command in R:
+
+``` r
+runSaltsR_app()
+```
+
+This will open the SaltsR application, where you can input your ion
+chromatography data and use the package’s functionality.

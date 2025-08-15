@@ -19,7 +19,47 @@ library(ggplot2)
 ```
 
 
-## Application
+- [Runsalt software](http://science.sdf-eu.org/runsalt/): Prediction of salt mixture behaviour under changing climate conditions using the ECOS thermodynamic model.
+- [KIK-IRPA PREDICT tools](https://predict.kikirpa.be/index.php/tools/): Suite of calculators for hygroscopic moisture content, ion balance, and climate data visualisation.
+- [SaltsR R package](https://bhavshah01.github.io/SaltsR/): Data science tools in development for interoperability with Runsalt software.
+
+This tool is designed for data analysis and modelling of salt behaviour in cultural heritage materials. Calculations are based on [Godts et al. 2022](https://www.nature.com/articles/s41597-022-01445-9).
+
+For the most up-to-date calculations, please use the [Salts Content Calculator](https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/).
+
+## Typical Workflow
+
+-   Upload ion chromatography data.
+
+-   Return output for the Runsalt application.
+
+-   Review visualisations and tables.
+
+-   Export analytical results.
+
+## Online
+
+You can use the interactive SaltsR application in a web browser:
+
+-   [SaltsR Online Application](https://oceanonline.shinyapps.io/SaltsRApp/)
+
+<https://oceanonline.shinyapps.io/SaltsRApp/>
+
+
+## SaltsR Installation
+
+You can install the development version of SaltsR from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("BhavShah01/SaltsR")
+```
+
+```{r example}
+library(SaltsR)
+```
+
+## Load the Application
 
 The SaltsR package provides an application to test its calculations. This interactive tool allows you to evaluate the package's output using ion chromatography data.
 
@@ -29,5 +69,6 @@ To launch the application, simply run the following command in R:
 runSaltsR_app()
 ```
 
-This will open the SaltsR application, where you can input your ion chromatography data and explore the package's functionality.
+This will open the SaltsR application, where you can input your ion chromatography data and use the package's functionality.
 
+**Disclaimer** - this tool is under development and the authour does not take any responsibilty.
