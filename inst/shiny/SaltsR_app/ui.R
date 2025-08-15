@@ -6,7 +6,8 @@ library(bslib)
 ui <- page_sidebar(
   title =
     div(
-      span("SaltsR - Tool for ECOS Runsalt", style = "font-size: 1.5em; font-weight: bold; margin-right: auto;"),
+      span("SaltsR - Tool for ECOS Runsalt",
+           style = "font-size: 1.5em; font-weight: bold; margin-right: auto;"),
       input_dark_mode(id = "mode", mode = "light"),
       style = "display: flex; align-items: center; justify-content: space-between; width: 100%;"
     ),
@@ -60,7 +61,7 @@ ui <- page_sidebar(
         card(full_screen = TRUE,
              card_header("Runsalt Output File"),
              fileInput("ECOS_file_upload", "1) Load a Runsalt Output File"),
-             "[Runsalt graph: Plot > Export Plot Data...]",
+             "[Runsalt: Plot > Export Plot Data...]",
              uiOutput("ECOS_temperature"),
              DT::dataTableOutput("ECOSoutput_table")
         ),
@@ -95,24 +96,24 @@ ui <- page_sidebar(
             full_screen = TRUE,
             style = "max-height: 300px; overflow-y: auto;",
             fileInput("TRH_upload", "2) Upload TRH data"),
-            "[TEMPERATURE, HUMIDITY columns]",
+            '["TEMPERATURE", "HUMIDITY" columns required as CSV]',
             DT::dataTableOutput("TRH_table")
-            )),
+          )),
         layout_column_wrap(
           width = 1,
-        card(
-          full_screen = TRUE,
-          card_header("Runsalt Output Graph"),
-          card_body(class = "p-0",
-                    plotOutput("ECOSmultiple_graph"))
+          card(
+            full_screen = TRUE,
+            card_header("Runsalt Output Graph"),
+            card_body(class = "p-0",
+                      plotOutput("ECOSmultiple_graph"))
           ),
-        card(
-          full_screen = TRUE,
-          card_header("Runsalt Output Graph + TRH data"),
-          card_body(class = "p-0",
-                    plotOutput("ECOSmultiple_TRHgraph"))
-        )),
-        )),
+          card(
+            full_screen = TRUE,
+            card_header("Runsalt Output Graph + TRH data"),
+            card_body(class = "p-0",
+                      plotOutput("ECOSmultiple_TRHgraph"))
+          )),
+      )),
     nav_panel(
       "Worldmet Weather data",
       layout_column_wrap(
@@ -129,12 +130,42 @@ ui <- page_sidebar(
       )),
     nav_panel(
       "Help",
-      markdown("Link to KIK-IRPA PREDICT [tools](https://predict.kikirpa.be/index.php/tools/)"),
-      layout_column_wrap(
-        height = 300,
-        card(full_screen = TRUE,
-             card_header("ECOS output"),
-             "Under development...")
-      ))
+      markdown(
+        '
+
+      - [Runsalt software](http://science.sdf-eu.org/runsalt/): Prediction of salt mixture behaviour under changing climate conditions using the ECOS thermodynamic model.
+      - [KIK-IRPA PREDICT tools](https://predict.kikirpa.be/index.php/tools/): Suite of calculators for hygroscopic moisture content, ion balance, and climate data visualisation.
+      - [SaltsR R package](https://bhavshah01.github.io/SaltsR/): Data science tools in development for interoperability with Runsalt software.
+
+      **Input for Runsalt**
+
+      This tool is designed for data analysis and modelling of salt behaviour in cultural heritage materials.
+      Calculations are based on [Godts et al. 2022](https://www.nature.com/articles/s41597-022-01445-9).
+
+      Input the ion data using the left-hand data input tab; corrected ion values will be returned for use with Runsalt software.
+      Please review any warnings or messages listed in the output.
+
+      For the most up-to-date calculations, use the
+      [PREDICT Salts Content Calculator](https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/).
+
+      **Output from Runsalt**
+
+      The output from Runsalt can be uploaded and visualised. Within Runsalt, calculations can be saved using “Runsalt: Plot > Export Plot Data...”.
+
+      **Output – Multiple Temperature Files**
+
+      Multiple Runsalt output files at 5°C temperature intervals can be uploaded and graphed.
+      You may also upload data from temperature and humidity loggers—files must have columns labelled TEMPERATURE and HUMIDITY in the header.
+
+      **Worldmet Weather data**
+
+      Under development to return data from the NOAA Integrated Surface Database (ISD).
+      Uses the [worldmet R package, Carslaw and Davidson 2025](https://openair-project.github.io/worldmet/).
+
+      **Disclaimer:** This application is under development.
+      The author does not accept responsibility for decisions made based on its output.
+
+      ')
+    )
   )
 )

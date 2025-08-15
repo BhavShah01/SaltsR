@@ -1,5 +1,9 @@
 # inst/SaltsR_app/app.R
 
+# devtools::install_github("BhavShah01/SaltsR")
+# library(SaltsR)
+source("R.R")
+
 library(shiny)
 library(bslib)
 library(dplyr)
@@ -9,7 +13,6 @@ library(readr)
 library(DT)
 library(ggplot2)
 library(ggrepel)
-library(SaltsR)
 library(leaflet)
 library(worldmet)
 library(shinyWidgets)
@@ -294,7 +297,7 @@ server <- function(input, output) {
     p <-
       ggplot(ecos_data, aes(x = Temp, ymin = RH_lower, ymax = RH_upper, fill = Salt)) +
       geom_ribbon(alpha = 0.2) +
-      coord_cartesian(ylim = c(0, 100)) +
+      coord_cartesian(ylim = c(15, 100)) +
       labs(title = NULL, x = "Temperature (°C)", y = "Humidity (%RH)") +
       facet_wrap(~Salt) +
       theme_classic(base_size = 16)
@@ -315,8 +318,9 @@ server <- function(input, output) {
     ecos_TRHdata |>
       ggplot(aes(x = Temp, ymin = RH_lower, ymax = RH_upper, fill = Salt)) +
       geom_ribbon(alpha = 0.2) +
+      geom_path(aes(x = TEMPERATURE, y = HUMIDITY), alpha = 0.2, colour = "grey50") +
       geom_point(aes(x = TEMPERATURE, y = HUMIDITY), alpha = 0.7, colour = "plum") +
-      coord_cartesian(xlim = c(0, 40), ylim = c(0, 100)) +
+      coord_cartesian(xlim = c(0, 40), ylim = c(15, 100)) +
       labs(title = NULL, x = "Temperature (°C)", y = "Humidity (%RH)") +
       theme_classic(base_size = 16)
   })
@@ -372,7 +376,7 @@ server <- function(input, output) {
       plot = TRUE,
       site = c(worldmet_site_names()),
       lat = input$select_lat, lon = input$select_lon
-      )
+    )
   })
 
   worldmet_data <- reactive({

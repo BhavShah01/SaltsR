@@ -1,0 +1,33 @@
+---
+title: "SaltsR Application"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(SaltsR)
+library(dplyr)
+library(ggplot2)
+```
+
+
+## Application
+
+The SaltsR package provides an application to test its calculations. This interactive tool allows you to evaluate the package's output using ion chromatography data.
+
+To launch the application, simply run the following command in R:
+
+``` r
+runSaltsR_app()
+```
+
+This will open the SaltsR application, where you can input your ion chromatography data and explore the package's functionality.
+
