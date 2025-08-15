@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   articles/SaltsR-Application: SaltsR-Application.html
   articles/SaltsR: SaltsR.html
-last_built: 2025-08-15T15:43Z
+last_built: 2025-08-15T16:24Z
 urls:
   reference: https://bhavshah01.github.io/SaltsR/reference
   article: https://bhavshah01.github.io/SaltsR/articles
