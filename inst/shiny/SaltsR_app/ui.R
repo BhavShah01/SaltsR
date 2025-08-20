@@ -1,4 +1,5 @@
 # inst/SaltsR_app/app.R
+# https://oceanonline.shinyapps.io/SaltsRApp/
 
 library(shiny)
 library(bslib)
@@ -6,27 +7,18 @@ library(bslib)
 ui <- page_sidebar(
   title =
     div(
-      span("SaltsR - Tool for ECOS Runsalt",
+      span("SaltsR Application - Tools for ECOS Runsalt",
            style = "font-size: 1.5em; font-weight: bold; margin-right: auto;"),
       input_dark_mode(id = "mode", mode = "light"),
       style = "display: flex; align-items: center; justify-content: space-between; width: 100%;"
     ),
   theme = bs_theme(bootswatch = "bootstrap"),
   sidebar = sidebar(
-    title = "Salt balance",
-    uiOutput("sel_sample"),
-    layout_column_wrap(
-      width = 1/2,
-      uiOutput("sel_dry_g"),
-      uiOutput("sel_water_ml"),
-      uiOutput("sel_sodium"),
-      uiOutput("sel_chloride"),
-      uiOutput("sel_potassium"),
-      uiOutput("sel_nitrate"),
-      uiOutput("sel_magnesium"),
-      uiOutput("sel_sulfate"),
-      uiOutput("sel_calcium")
-    )
+    title = "SaltsRApp",
+    open = FALSE,
+    markdown("[Runsalt software](http://science.sdf-eu.org/runsalt/)"),
+    markdown("[KIK-IRPA PREDICT project](https://predict.kikirpa.be/)"),
+    markdown("[SaltsR Github](https://bhavshah01.github.io/SaltsR/)"),
   ),
 
   navset_card_tab(
@@ -34,53 +26,80 @@ ui <- page_sidebar(
     nav_panel(
       "Input for Runsalt",
       layout_columns(
-        card_title("Input for ECOS Runsalt"),
-        markdown("[PREDICT Salt Content Calculator (recommended)](https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/)"),
-        col_widths = c(3, 9)
+        card_title("Salt Balance for ECOS Runsalt"),
+        markdown("**[Use the PREDICT Salt Content Calculator (recommended for the most up to date calculations)](https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/)**"),
+        col_widths = c(4, 8)
       ),
       layout_column_wrap(
-        width = 1/2,
-        card(full_screen = TRUE,
-             card_header("Input for Runsalt"),
-             DT::dataTableOutput("ECOS_table"),
-             textOutput("salts_messages"),
+        width = 1/3,
+        card(
+          full_screen = TRUE,
+          card_header("1) Enter ion data"),
+          uiOutput("sel_sample"),
+          layout_column_wrap(
+            width = 1/2,
+            uiOutput("sel_dry_g"),
+            uiOutput("sel_water_ml"),
+            uiOutput("sel_sodium"),
+            uiOutput("sel_chloride"),
+            uiOutput("sel_potassium"),
+            uiOutput("sel_nitrate"),
+            uiOutput("sel_magnesium"),
+            uiOutput("sel_sulfate"),
+            uiOutput("sel_calcium")
+          ),
         ),
-        card(full_screen = TRUE,
-             card_header("Salt ion correction"),
-             card_body(
-               class = "p-0",
-               plotOutput("salts_corrected_graph"),
-               downloadButton("salts_download", "Download complete results"),
-             )
+        card(
+          full_screen = TRUE,
+          card_header("2)  Check ion correction"),
+          card_body(
+            class = "p-0",
+            textOutput("salts_messages"),
+            # plotOutput("salts_corrected_graph_wt"),
+            plotOutput("salts_corrected_graph_mol"),
+          )
+        ),
+        card(
+          full_screen = TRUE,
+          card_header("3) Balanced data for input into Runsalt"),
+          DT::dataTableOutput("ECOS_table"),
+          downloadButton("download_runsalt", "4) Download Runsalt File"),
+          "5) Upload in Runsalt software: File > Open...",
+          # downloadButton("salts_download", "Download complete results"),
         ),
       )),
     nav_panel(
       title = "Output from Runsalt",
-      # card_title("Output from ECOS Runsalt"),
-      layout_column_wrap(
-        card(full_screen = TRUE,
-             card_header("Runsalt Output File"),
-             fileInput("ECOS_file_upload", "1) Load a Runsalt Output File"),
-             "[Runsalt: Plot > Export Plot Data...]",
-             uiOutput("ECOS_temperature"),
-             DT::dataTableOutput("ECOSoutput_table")
-        ),
-        card(full_screen = TRUE,
-             card_header("Runsalt Output Graph"),
-             card_body(class = "p-0", plotOutput("ECOSoutput_graph")))
+      card_title("Graph the output from ECOS Runsalt"),
+      layout_columns(
+        col_widths = c(4, 8),
+        layout_column_wrap(
+          card(full_screen = TRUE,
+               card_header("Runsalt Output File"),
+               "1) Export the graph data from Runsalt: Plot > Export Plot Data...",
+               fileInput("ECOS_file_upload", "2) Load a Runsalt Output File"),
+
+               uiOutput("ECOS_temperature"),
+               DT::dataTableOutput("ECOSoutput_table")
+          )),
+        layout_column_wrap(
+          card(full_screen = TRUE,
+               card_header("Runsalt Output Graph"),
+               card_body(class = "p-0", plotOutput("ECOSoutput_graph"))
+          ))
       )),
     nav_panel(
-      "Output - Multiple Temperature Files",
+      title = "Output - Multiple Temperature Files",
+      card_title("Upload multiple temperature files in 5C steps and overlay TRH data"),
       layout_columns(
-        col_widths = c(5, 7),
+        col_widths = c(4, 8),
         layout_column_wrap(
           width = 1,
           card(
             full_screen = TRUE,
             style = "max-height: 400px; overflow-y: auto;",
-            card_header("Multiple Runsalt Output Files by Temperature"),
+            card_header("1) Upload Runsalt Output Files by Temperature"),
             card_body(
-              "1) Upload Runsalt Output Files by Temperature",
               fileInput("ECOS_upload00C", "Runsalt Output (0°C)"),
               fileInput("ECOS_upload05C", "Runsalt Output (5°C)"),
               fileInput("ECOS_upload10C", "Runsalt Output (10°C)"),
@@ -90,17 +109,28 @@ ui <- page_sidebar(
               fileInput("ECOS_upload30C", "Runsalt Output (30°C)"),
               fileInput("ECOS_upload35C", "Runsalt Output (35°C)"),
               fileInput("ECOS_upload40C", "Runsalt Output (40°C)"),
-              DT::dataTableOutput("ECOSmultiple_table"))
+            )),
+          card(
+            full_screen = TRUE,
+            style = "max-height: 300px; overflow-y: auto;",
+            card_header("2) Filter salts"),
+            uiOutput("salt_filter"),
           ),
           card(
             full_screen = TRUE,
             style = "max-height: 300px; overflow-y: auto;",
-            fileInput("TRH_upload", "2) Upload TRH data"),
-            '["TEMPERATURE", "HUMIDITY" columns required as CSV]',
+            card_header("3) Upload TRH data if available"),
+            fileInput("TRH_upload", "Upload TRH data"),
+            '"TEMPERATURE", "HUMIDITY" columns are required in a CSV file',
             DT::dataTableOutput("TRH_table")
           )),
         layout_column_wrap(
           width = 1,
+          card(
+            full_screen = TRUE,
+            card_header("Runsalt Output Table"),
+            DT::dataTableOutput("ECOSmultiple_table"),
+          ),
           card(
             full_screen = TRUE,
             card_header("Runsalt Output Graph"),
@@ -141,6 +171,7 @@ ui <- page_sidebar(
 
       This tool is designed for data analysis and modelling of salt behaviour in cultural heritage materials.
       Calculations are based on [Godts et al. 2022](https://www.nature.com/articles/s41597-022-01445-9).
+      Issues with the SaltsR app can be raised on the [Github issues page](https://github.com/BhavShah01/SaltsR/issues).
 
       Input the ion data using the left-hand data input tab; corrected ion values will be returned for use with Runsalt software.
       Please review any warnings or messages listed in the output.
@@ -165,7 +196,7 @@ ui <- page_sidebar(
       **Disclaimer:** This application is under development.
       The author does not accept responsibility for decisions made based on its output.
 
-      ')
-    )
+      '
+      ))
   )
 )

@@ -94,6 +94,17 @@ fun_salt_balance <- function(
   )
 
 
+  # Eqn 0. Convert to Mols
+  chloride_mol = (chloride_ppm * (water_ml )) / (mol_wts$chloride * 1000)
+  nitrate_mol = (nitrate_ppm * (water_ml )) / (mol_wts$nitrate * 1000)
+  sulfate_mol = (sulfate_ppm * (water_ml )) / (mol_wts$sulfate * 1000)
+  sodium_mol = (sodium_ppm * (water_ml )) / (mol_wts$sodium * 1000)
+  potassium_mol = (potassium_ppm * (water_ml )) / (mol_wts$potassium * 1000)
+  calcium_mol = (calcium_ppm * (water_ml )) / (mol_wts$calcium * 1000)
+  magnesium_mol = (magnesium_ppm * (water_ml )) / (mol_wts$magnesium * 1000)
+
+
+
   # Eqn 1. Weight fractions (displayed as weight percents)
   # Eqn 1. Ion content in the sample (w\%)
   # ms (g) | Vw (mL) | c (mg L-1) -> wCl (kg/kg (-))
@@ -105,7 +116,7 @@ fun_salt_balance <- function(
   calcium_wt = (calcium_ppm * (water_ml / 1000)) / (dry_g * 1000)
   magnesium_wt = (magnesium_ppm * (water_ml / 1000)) / (dry_g * 1000)
   total_wt = chloride_wt + nitrate_wt + sulfate_wt +
-                 sodium_wt + potassium_wt + calcium_wt + magnesium_wt
+    sodium_wt + potassium_wt + calcium_wt + magnesium_wt
 
 
   # Eqn 2. Amount of substance converted to mEq
@@ -167,17 +178,19 @@ fun_salt_balance <- function(
   sulfate_mEq_Path2Ca = ifelse(Pathway == "Pathway 2", sulfate_mEq, NA)
   sodium_mEq_Path2Ca = ifelse(Pathway == "Pathway 2", sodium_mEq, NA)
   potassium_mEq_Path2Ca = ifelse(Pathway == "Pathway 2", potassium_mEq, NA)
-  calcium_mEq_Path2Ca = ifelse(
-    Pathway == "Pathway 2",
-    (ifelse(calcium_mEq - charge_imbalance_initial >= 0,
-            calcium_mEq - charge_imbalance_initial, 0)), NA)
+  calcium_mEq_Path2Ca =
+    ifelse(Pathway == "Pathway 2",
+           (ifelse(calcium_mEq - charge_imbalance_initial >= 0,
+                   calcium_mEq - charge_imbalance_initial, 0)), NA)
   magnesium_mEq_Path2Ca = ifelse(Pathway == "Pathway 2", magnesium_mEq, NA)
   # Re-balance post Ca (5a)
   total_mEq_anions_Path2Ca = chloride_mEq_Path2Ca + nitrate_mEq_Path2Ca + sulfate_mEq_Path2Ca
   total_mEq_cations_Path2Ca = sodium_mEq_Path2Ca + potassium_mEq_Path2Ca + calcium_mEq_Path2Ca + magnesium_mEq_Path2Ca
-  charge_imbalance_CaAdj = ifelse(
-    abs(total_mEq_anions_Path2Ca - total_mEq_cations_Path2Ca) < 0.000001,
-    0, total_mEq_anions_Path2Ca - total_mEq_cations_Path2Ca)
+  charge_imbalance_CaAdj =
+    ifelse(Pathway == "Pathway 2",
+           ifelse(
+             abs(total_mEq_cations_Path2Ca - total_mEq_anions_Path2Ca) < 0.000001,
+             0, total_mEq_cations_Path2Ca - total_mEq_anions_Path2Ca), NA)
 
 
   # Eqn 5b. Pathway II - Excess is assumed to relate to the least soluble salt: Magnesium adjustment
@@ -188,16 +201,18 @@ fun_salt_balance <- function(
   sodium_mEq_Path2Mg = ifelse(Pathway == "Pathway 2", sodium_mEq_Path2Ca, NA)
   potassium_mEq_Path2Mg = ifelse(Pathway == "Pathway 2", potassium_mEq_Path2Ca, NA)
   calcium_mEq_Path2Mg = ifelse(Pathway == "Pathway 2", calcium_mEq_Path2Ca, NA)
-  magnesium_mEq_Path2Mg = ifelse(
-    Pathway == "Pathway 2",
-    (ifelse(magnesium_mEq_Path2Ca - charge_imbalance_CaAdj >= 0,
-            magnesium_mEq_Path2Ca - charge_imbalance_CaAdj, 0)), NA)
+  magnesium_mEq_Path2Mg =
+    ifelse(Pathway == "Pathway 2",
+           (ifelse(magnesium_mEq_Path2Ca - charge_imbalance_CaAdj >= 0,
+                   magnesium_mEq_Path2Ca - charge_imbalance_CaAdj, 0)), NA)
   # Re-balance post Mg (5b)
   total_mEq_anions_Path2Mg = chloride_mEq_Path2Mg + nitrate_mEq_Path2Mg + sulfate_mEq_Path2Mg
   total_mEq_cations_Path2Mg = sodium_mEq_Path2Mg + potassium_mEq_Path2Mg + calcium_mEq_Path2Mg + magnesium_mEq_Path2Mg
-  charge_imbalance_MgAdj = ifelse(
-    abs(total_mEq_anions_Path2Mg - total_mEq_cations_Path2Mg) < 0.000001,
-    0, total_mEq_anions_Path2Mg - total_mEq_cations_Path2Mg)
+  charge_imbalance_MgAdj =
+    ifelse(Pathway == "Pathway 2",
+           ifelse(
+             abs(total_mEq_cations_Path2Mg - total_mEq_anions_Path2Mg) < 0.000001,
+             0, total_mEq_cations_Path2Mg - total_mEq_anions_Path2Mg), NA)
 
 
   # Eqn 5c. Pathway II - Excess is assumed to relate to the least soluble salt: Sodium adjustment
@@ -205,19 +220,22 @@ fun_salt_balance <- function(
   chloride_mEq_Path2Na = ifelse(Pathway == "Pathway 2", chloride_mEq_Path2Mg, NA)
   nitrate_mEq_Path2Na = ifelse(Pathway == "Pathway 2", nitrate_mEq_Path2Mg, NA)
   sulfate_mEq_Path2Na = ifelse(Pathway == "Pathway 2", sulfate_mEq_Path2Mg, NA)
-  sodium_mEq_Path2Na = ifelse(
-    Pathway == "Pathway 2",
-    (ifelse(sodium_mEq_Path2Mg - charge_imbalance_MgAdj >= 0,
-            sodium_mEq_Path2Mg - charge_imbalance_MgAdj, 0)), NA)
+  sodium_mEq_Path2Na =
+    ifelse(Pathway == "Pathway 2",
+           (ifelse(
+             sodium_mEq_Path2Mg - charge_imbalance_MgAdj >= 0,
+             sodium_mEq_Path2Mg - charge_imbalance_MgAdj, 0)), NA)
   potassium_mEq_Path2Na = ifelse(Pathway == "Pathway 2", potassium_mEq_Path2Mg, NA)
   calcium_mEq_Path2Na = ifelse(Pathway == "Pathway 2", calcium_mEq_Path2Mg, NA)
   magnesium_mEq_Path2Na = ifelse(Pathway == "Pathway 2", magnesium_mEq_Path2Mg, NA)
   # Re-balance post Na (5c)
   total_mEq_anions_Path2Na = chloride_mEq_Path2Na + nitrate_mEq_Path2Na + sulfate_mEq_Path2Na
   total_mEq_cations_Path2Na = sodium_mEq_Path2Na + potassium_mEq_Path2Na + calcium_mEq_Path2Na + magnesium_mEq_Path2Na
-  charge_imbalance_NaAdj = ifelse(
-    abs(total_mEq_anions_Path2Na - total_mEq_cations_Path2Na) < 0.000001,
-    0, total_mEq_anions_Path2Na - total_mEq_cations_Path2Na)
+  charge_imbalance_NaAdj =
+    ifelse(Pathway == "Pathway 2",
+           ifelse(
+             abs(total_mEq_cations_Path2Na - total_mEq_anions_Path2Na) < 0.000001,
+             0, total_mEq_cations_Path2Na - total_mEq_anions_Path2Na), NA)
 
 
   # Eqn 5d. Pathway II - Excess is assumed to relate to the least soluble salt: Potassium adjustment
@@ -226,18 +244,21 @@ fun_salt_balance <- function(
   nitrate_mEq_Path2K = ifelse(Pathway == "Pathway 2", nitrate_mEq_Path2Na, NA)
   sulfate_mEq_Path2K = ifelse(Pathway == "Pathway 2", sulfate_mEq_Path2Na, NA)
   sodium_mEq_Path2K = ifelse(Pathway == "Pathway 2", sodium_mEq_Path2Na, NA)
-  potassium_mEq_Path2K = ifelse(
-    Pathway == "Pathway 2",
-    (ifelse(potassium_mEq_Path2Na - charge_imbalance_NaAdj >= 0,
-            potassium_mEq_Path2Na - charge_imbalance_NaAdj, 0)), NA)
+  potassium_mEq_Path2K =
+    ifelse(Pathway == "Pathway 2",
+           ifelse(
+             potassium_mEq_Path2Na - charge_imbalance_NaAdj >= 0,
+             potassium_mEq_Path2Na - charge_imbalance_NaAdj, 0), NA)
   calcium_mEq_Path2K = ifelse(Pathway == "Pathway 2", calcium_mEq_Path2Na, NA)
   magnesium_mEq_Path2K = ifelse(Pathway == "Pathway 2", magnesium_mEq_Path2Na, NA)
   # Re-balance post K (5d)
   total_mEq_anions_Path2K = chloride_mEq_Path2K + nitrate_mEq_Path2K + sulfate_mEq_Path2K
   total_mEq_cations_Path2K = sodium_mEq_Path2K + potassium_mEq_Path2K + calcium_mEq_Path2K + magnesium_mEq_Path2K
-  charge_imbalance_KAdj = ifelse(
-    abs(total_mEq_anions_Path2K - total_mEq_cations_Path2K) < 0.000001,
-    0, total_mEq_anions_Path2K - total_mEq_cations_Path2K)
+  charge_imbalance_KAdj =
+    ifelse(Pathway == "Pathway 2",
+           ifelse(
+             abs(total_mEq_cations_Path2K - total_mEq_anions_Path2K) < 0.000001,
+             0, total_mEq_cations_Path2K - total_mEq_anions_Path2K), NA)
 
 
   # Adjusted Values (after either Pathway I or Pathway II) for gypsum removal
@@ -315,7 +336,7 @@ fun_salt_balance <- function(
     (potassium_mEq - potassium_mEq_adj) / (sodium_mEq + potassium_mEq + calcium_mEq + magnesium_mEq))
 
 
-  # Eqn 10. Adjusted contents as Weight Fraction Relative to the Dry Sample Mass, displayed as a weight percent
+  # Eqn 10. ECOS input: Adjusted contents as Weight Fraction Relative to the Dry Sample Mass, displayed as a weight percent
   # final corrected amount of substance as weight fraction per individual ion in the dry sample mass, wi,f
   # w,f (-) eq10
   chloride_wt_adj = ((chloride_mEq_adj_SO4 * (mol_wts$chloride / 1000)) / salt_charges_z$chloride) * 0.001
@@ -396,7 +417,7 @@ fun_salt_balance <- function(
 
   # RESULTS Output dataframe with results of all calculations
   salt_balance <- tibble::tibble(
-  # salt_balance <- c(
+    # salt_balance <- c(
     sample_name,
     dry_g,
     water_ml,
@@ -408,6 +429,15 @@ fun_salt_balance <- function(
     calcium_ppm,
     magnesium_ppm,
 
+
+    # Eqn 0 # added mol calculation
+    chloride_mol,
+    nitrate_mol,
+    sulfate_mol,
+    sodium_mol,
+    potassium_mol,
+    calcium_mol,
+    magnesium_mol,
 
     # Eqn 1
     chloride_wt,
@@ -435,7 +465,7 @@ fun_salt_balance <- function(
     imbalance_allocation,
     Pathway1,
     Pathway2,
-    Pathway,
+    # Pathway,
 
     # Eqn 4
     chloride_mEq_Path1,
@@ -589,3 +619,5 @@ fun_salt_balance <- function(
 
   return(salt_balance)
 }
+
+
