@@ -40,6 +40,10 @@ This will open the SaltsR application, where you can input your ion chromatograp
 
 Use the function below with the following inputs to perform a salt balance. The full outputs of the function are shown underneath.
 
+For the most up-to-date calculations, please use the [Salts Content Calculator](https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/).
+
+Please raise issues with the SaltsR calculations on the [Github issues page](https://github.com/BhavShah01/SaltsR/issues).
+
 ``` r
 fun_salt_balance(sample_name = "Pathway 2",
                  dry_g = 0.801,
@@ -65,9 +69,6 @@ fun_salt_balance(sample_name = "Pathway 2",
                  calcium_ppm = 49.809,
                  magnesium_ppm = 0.581) |>
 dplyr::glimpse()
-
-
-
 
 ```
 
