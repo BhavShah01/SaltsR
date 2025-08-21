@@ -1,6 +1,7 @@
 ## R helper file for SaltsRApp ----
 
-tidyRunsalt <- function(file_path, X_col = "RH", Y_col = "mol", Temp_value = 20) {
+
+tidyRunsalt <- function(file_path, Temp_value = 20) {
   FILENAME = basename(file_path)
 
   runsalt_output <-
@@ -11,13 +12,34 @@ tidyRunsalt <- function(file_path, X_col = "RH", Y_col = "mol", Temp_value = 20)
     pivot_wider(names_from = Variable, values_from = value) |>
     unnest(c(X, Y)) |>
     mutate(
-      filename = FILENAME,
-      !!X_col := X,
-      !!Y_col := Y,
-      Temp = Temp_value)
-
+      Temp = Temp_value,
+      RH = X,
+      mol = Y
+    )
   return(runsalt_output)
 }
+
+# tidyRunsalt <- function(file_path, X_col = "RH", Y_col = "mol", Temp_value = 20) {
+#   FILENAME = basename(file_path)
+#
+#   runsalt_output <-
+#     read_table(file_path, col_names = FALSE) |>
+#     pivot_longer(-1) |>
+#     separate(X1, sep = "_", into = c("Salt", "Variable")) |>
+#     drop_na(value) |>
+#     pivot_wider(names_from = Variable, values_from = value) |>
+#     unnest(c(X, Y)) |>
+#     mutate(
+#       filename = FILENAME,
+#       # !!X_col := X,
+#       # !!Y_col := Y,
+#       !!sym(X_col) := X,
+#       !!sym(Y_col) := Y,
+#       Temp = Temp_value)
+#
+#   return(runsalt_output)
+# }
+
 
 
 fun_salt_balance <- function(

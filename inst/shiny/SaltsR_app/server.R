@@ -22,7 +22,6 @@ library(shinyWidgets)
 server <- function(input, output) {
   # bs_themer()
 
-
   # ECOS input ----
 
   output$sel_sample <- renderUI({
@@ -127,9 +126,6 @@ server <- function(input, output) {
       writeLines(lines, file)
     }
   )
-
-
-
 
   output$salts_corrected_graph_wt <- renderPlot({
     salts_corrected() |>
@@ -241,66 +237,139 @@ server <- function(input, output) {
 
   ECOS_tidy00C <- reactive({
     req(input$ECOS_upload00C)
-    ECOS_file00 <- input$ECOS_upload00C
-    ext <- tools::file_ext(ECOS_file00$datapath)
+    ECOS_file <- input$ECOS_upload00C
+    ext <- tools::file_ext(ECOS_file$datapath)
     # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
-    tidyRunsalt(ECOS_file00$datapath, Temp_value = 0)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = 0)
   })
   ECOS_tidy05C <- reactive({
     req(input$ECOS_upload05C)
-    ECOS_file05 <- input$ECOS_upload05C
-    ext <- tools::file_ext(ECOS_file05$datapath)
-    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
-    tidyRunsalt(ECOS_file05$datapath, Temp_value = 5)
+    ECOS_file <- input$ECOS_upload05C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = 5)
   })
   ECOS_tidy10C <- reactive({
     req(input$ECOS_upload10C)
-    ECOS_file10 <- input$ECOS_upload10C
-    ext <- tools::file_ext(ECOS_file10$datapath)
-    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
-    tidyRunsalt(ECOS_file10$datapath, Temp_value = 10)
+    ECOS_file <- input$ECOS_upload10C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = 10)
   })
   ECOS_tidy15C <- reactive({
-    req(input$ECOS_upload015C)
-    ECOS_file15 <- input$ECOS_upload15C
-    ext <- tools::file_ext(ECOS_file15$datapath)
-    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
-    tidyRunsalt(ECOS_file15$datapath, Temp_value = 15)
+    req(input$ECOS_upload15C)
+    ECOS_file <- input$ECOS_upload15C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = 15)
   })
   ECOS_tidy20C <- reactive({
     req(input$ECOS_upload20C)
-    ECOS_file20 <- input$ECOS_upload20C
-    ext <- tools::file_ext(ECOS_file20$datapath)
-    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
-    tidyRunsalt(ECOS_file20$datapath, Temp_value = 20)
+    ECOS_file <- input$ECOS_upload20C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = 20)
   })
   ECOS_tidy25C <- reactive({
-    req(input$ECOS_upload025C)
-    ECOS_file25 <- input$ECOS_upload25C
-    ext <- tools::file_ext(ECOS_file25$datapath)
-    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
-    tidyRunsalt(ECOS_file25$datapath, Temp_value = 25)
+    req(input$ECOS_upload25C)
+    ECOS_file <- input$ECOS_upload25C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = 25)
   })
   ECOS_tidy30C <- reactive({
     req(input$ECOS_upload30C)
-    ECOS_file30 <- input$ECOS_upload30C
-    ext <- tools::file_ext(ECOS_file30$datapath)
-    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
-    tidyRunsalt(ECOS_file30$datapath, Temp_value = 30)
+    ECOS_file <- input$ECOS_upload30C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = 30)
   })
   ECOS_tidy35C <- reactive({
     req(input$ECOS_upload35C)
     ECOS_file <- input$ECOS_upload35C
     ext <- tools::file_ext(ECOS_file$datapath)
-    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
-    tidyRunsalt(ECOS_file35$datapath, Temp_value = 35)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = 35)
   })
   ECOS_tidy40C <- reactive({
     req(input$ECOS_upload40C)
-    ECOS_file40 <- input$ECOS_upload40C
-    ext <- tools::file_ext(ECOS_file40$datapath)
-    # validate(need(ext == "txt", "Please upload a Runsalt output txt file"))
-    tidyRunsalt(ECOS_file40$datapath, Temp_value = 40)
+    ECOS_file <- input$ECOS_upload40C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = 40)
+  })
+
+  # Additional Temps
+  output$ECOS_tempX1 <- renderUI({
+    numericInput("ECOS_tempX1", "Enter X1 Temperature°C", value = 16)
+  })
+  ECOS_tidyX1C <- reactive({
+    req(input$ECOS_uploadX1C)
+    ECOS_file <- input$ECOS_uploadX1C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = input$ECOS_tempX1)
+  })
+
+  output$ECOS_tempX2 <- renderUI({
+    numericInput("ECOS_tempX2", "Enter X2 Temperature°C", value = 17)
+  })
+  ECOS_tidyX2C <- reactive({
+    req(input$ECOS_uploadX2C)
+    ECOS_file <- input$ECOS_uploadX2C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = input$ECOS_tempX2)
+  })
+
+  output$ECOS_tempX3 <- renderUI({
+    numericInput("ECOS_tempX3", "Enter X3 Temperature°C", value = 18)
+  })
+  ECOS_tidyX3C <- reactive({
+    req(input$ECOS_uploadX3C)
+    ECOS_file <- input$ECOS_uploadX3C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = input$ECOS_tempX3)
+  })
+
+  output$ECOS_tempX4 <- renderUI({
+    numericInput("ECOS_tempX4", "Enter X4 Temperature°C", value = 19)
+  })
+  ECOS_tidyX4C <- reactive({
+    req(input$ECOS_uploadX4C)
+    ECOS_file <- input$ECOS_uploadX4C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = input$ECOS_tempX4)
+  })
+
+  output$ECOS_tempX5 <- renderUI({
+    numericInput("ECOS_tempX5", "Enter X5 Temperature°C", value = 21)
+  })
+  ECOS_tidyX5C <- reactive({
+    req(input$ECOS_uploadX5C)
+    ECOS_file <- input$ECOS_uploadX5C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = input$ECOS_tempX5)
+  })
+
+  output$ECOS_tempX6 <- renderUI({
+    numericInput("ECOS_tempX6", "Enter X6 Temperature°C", value = 22)
+  })
+  ECOS_tidyX6C <- reactive({
+    req(input$ECOS_uploadX6C)
+    ECOS_file <- input$ECOS_uploadX6C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = input$ECOS_tempX6)
+  })
+
+  output$ECOS_tempX7 <- renderUI({
+    numericInput("ECOS_tempX7", "Enter X7 Temperature°C", value = 23)
+  })
+  ECOS_tidyX7C <- reactive({
+    req(input$ECOS_uploadX7C)
+    ECOS_file <- input$ECOS_uploadX7C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = input$ECOS_tempX7)
+  })
+
+  output$ECOS_tempX8 <- renderUI({
+    numericInput("ECOS_tempX8", "Enter X8 Temperature°C", value = 24)
+  })
+  ECOS_tidyX8C <- reactive({
+    req(input$ECOS_uploadX8C)
+    ECOS_file <- input$ECOS_uploadX8C
+    ext <- tools::file_ext(ECOS_file$datapath)
+    tidyRunsalt(ECOS_file$datapath, Temp_value = input$ECOS_tempX8)
   })
 
   ECOS_multiple <- reactive({
@@ -313,11 +382,27 @@ server <- function(input, output) {
       `25C` = purrr::safely(~.x) (ECOS_tidy25C())$result,
       `30C` = purrr::safely(~.x) (ECOS_tidy30C())$result,
       `35C` = purrr::safely(~.x) (ECOS_tidy35C())$result,
-      `40C` = purrr::safely(~.x) (ECOS_tidy40C())$result
+      `40C` = purrr::safely(~.x) (ECOS_tidy40C())$result,
+      `X1C` = purrr::safely(~.x) (ECOS_tidyX1C())$result,
+      `X2C` = purrr::safely(~.x) (ECOS_tidyX2C())$result,
+      `X3C` = purrr::safely(~.x) (ECOS_tidyX3C())$result,
+      `X4C` = purrr::safely(~.x) (ECOS_tidyX4C())$result,
+      `X5C` = purrr::safely(~.x) (ECOS_tidyX5C())$result,
+      `X6C` = purrr::safely(~.x) (ECOS_tidyX6C())$result,
+      `X7C` = purrr::safely(~.x) (ECOS_tidyX7C())$result,
+      `X8C` = purrr::safely(~.x) (ECOS_tidyX8C())$result
     )
     lst <- purrr::compact(lst)
     if (length(lst) == 0) return(NULL)
     dplyr::bind_rows(lst, .id = "temp_label")
+  })
+
+  output$ECOS_multiple_table <- DT::renderDataTable({
+    req(ECOS_multiple())
+    ECOS_multiple() |>
+      DT::datatable(
+        extensions = c("Buttons"),
+        list(dom = 'Bt', buttons = list("excel"), pageLength = nrow(ECOS_multiple())))
   })
 
 
@@ -334,14 +419,24 @@ server <- function(input, output) {
 
   ECOS_multiple_filtered <- reactive({
     req(input$salt_filter)
-    df <- ECOS_multiple()
-    df_filtered <- df[df$Salt %in% input$salt_filter, ]
-    df_filtered
+    ECOS_multiple() |>
+      filter(Salt %in% c(input$salt_filter))
   })
 
-  ECOS_multiple_tabledata <- reactive({
+  output$ECOS_multiple_filtered_table <- DT::renderDataTable({
     req(ECOS_multiple_filtered())
     ECOS_multiple_filtered() |>
+      DT::datatable(
+        extensions = c("Buttons"),
+        list(dom = 'Bt', buttons = list("excel"), pageLength = nrow(ECOS_multiple_filtered())))
+  })
+
+
+  # Data table multiple
+  ECOS_multiple_summary <- reactive({
+    req(ECOS_multiple_filtered())
+    ECOS_multiple_filtered() |>
+      ungroup() |>
       group_by(Salt, Temp) |>
       summarise(
         RHmin = min(RH, na.rm = TRUE),
@@ -350,14 +445,12 @@ server <- function(input, output) {
       )
   })
 
-
-  # Data table multiple
-  output$ECOSmultiple_table <- DT::renderDataTable({
-    req(ECOS_multiple_tabledata())
-    ECOS_multiple_tabledata() |>
+  output$ECOS_multiple_summary_table <- DT::renderDataTable({
+    req(ECOS_multiple_summary())
+    ECOS_multiple_summary() |>
       DT::datatable(
         extensions = c("Buttons"),
-        list(dom = 'Bt', buttons = list("excel"), pageLength = nrow(ECOS_multiple())))
+        list(dom = 'Bt', buttons = list("excel"), pageLength = nrow(ECOS_multiple_summary())))
   })
 
 
@@ -366,7 +459,7 @@ server <- function(input, output) {
     req(ECOS_multiple_filtered())
 
     ecos_data <- ECOS_multiple_filtered() |>
-      group_by(Salt, Temp, filename) |>
+      group_by(Salt, Temp) |>
       mutate(RH_lower = min(RH), RH_upper = max(RH))
 
     p <-
@@ -394,9 +487,8 @@ server <- function(input, output) {
   output$ECOSmultiple_TRHgraph <- renderPlot({
     req(ECOS_multiple_filtered())
 
-    trh <- TRHdata()
     ecos_data <- ECOS_multiple_filtered() |>
-      group_by(Salt, Temp, filename) |>
+      group_by(Salt, Temp) |>
       mutate(RH_lower = min(RH), RH_upper = max(RH))
 
     p <-
@@ -408,9 +500,9 @@ server <- function(input, output) {
       geom_ribbon(aes(x = Temp, ymin = RH_lower, ymax = RH_upper, fill = Salt), alpha = 0.4)
 
     # Only add TRH points if TRHdata is available and not empty
-    if (!is.null(trh) && nrow(trh) > 0) {
+    if (!is.null(TRHdata()) && nrow(TRHdata()) > 0) {
       p <- p +
-        geom_point(data = trh, aes(x = TEMPERATURE, y = HUMIDITY), alpha = 0.7, colour = "plum")
+        geom_point(data = TRHdata(), aes(x = TEMPERATURE, y = HUMIDITY), alpha = 0.7, colour = "plum")
     }
     return(p)
   })

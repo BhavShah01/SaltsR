@@ -5,13 +5,7 @@ library(shiny)
 library(bslib)
 
 ui <- page_sidebar(
-  title =
-    div(
-      span("SaltsR Application - Tools for ECOS Runsalt",
-           style = "font-size: 1.5em; font-weight: bold; margin-right: auto;"),
-      input_dark_mode(id = "mode", mode = "light"),
-      style = "display: flex; align-items: center; justify-content: space-between; width: 100%;"
-    ),
+  title = "SaltsR Application - Tools for ECOS Runsalt",
   theme = bs_theme(bootswatch = "bootstrap"),
   sidebar = sidebar(
     title = "SaltsRApp",
@@ -78,7 +72,6 @@ ui <- page_sidebar(
                card_header("Runsalt Output File"),
                "1) Export the graph data from Runsalt: Plot > Export Plot Data...",
                fileInput("ECOS_file_upload", "2) Load a Runsalt Output File"),
-
                uiOutput("ECOS_temperature"),
                DT::dataTableOutput("ECOSoutput_table")
           )),
@@ -109,6 +102,24 @@ ui <- page_sidebar(
               fileInput("ECOS_upload30C", "Runsalt Output (30°C)"),
               fileInput("ECOS_upload35C", "Runsalt Output (35°C)"),
               fileInput("ECOS_upload40C", "Runsalt Output (40°C)"),
+              h3("Add Additional Temperature inputs"),
+              fileInput("ECOS_uploadX1C", "Runsalt Output (Specify Temp°C below)"),
+              uiOutput("ECOS_tempX1"),
+              fileInput("ECOS_uploadX2C", "Runsalt Output (Specify Temp°C below)"),
+              uiOutput("ECOS_tempX2"),
+              fileInput("ECOS_uploadX3C", "Runsalt Output (Specify Temp°C below)"),
+              uiOutput("ECOS_tempX3"),
+              fileInput("ECOS_uploadX4C", "Runsalt Output (Specify Temp°C below)"),
+              uiOutput("ECOS_tempX4"),
+              fileInput("ECOS_uploadX5C", "Runsalt Output (Specify Temp°C below)"),
+              uiOutput("ECOS_tempX5"),
+              fileInput("ECOS_uploadX6C", "Runsalt Output (Specify Temp°C below)"),
+              uiOutput("ECOS_tempX6"),
+              fileInput("ECOS_uploadX7C", "Runsalt Output (Specify Temp°C below)"),
+              uiOutput("ECOS_tempX7"),
+              fileInput("ECOS_uploadX8C", "Runsalt Output (Specify Temp°C below)"),
+              uiOutput("ECOS_tempX8"),
+              dataTableOutput("ECOS_multiple_table"),
             )),
           card(
             full_screen = TRUE,
@@ -128,7 +139,7 @@ ui <- page_sidebar(
           card(
             full_screen = TRUE,
             card_header("Runsalt Output Table"),
-            DT::dataTableOutput("ECOSmultiple_table"),
+            DT::dataTableOutput("ECOS_multiple_summary_table"),
           ),
           card(
             full_screen = TRUE,
