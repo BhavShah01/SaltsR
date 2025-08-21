@@ -122,7 +122,6 @@ ui <- page_sidebar(
             card_header("3) Upload TRH data if available"),
             fileInput("TRH_upload", "Upload TRH data"),
             '"TEMPERATURE", "HUMIDITY" columns are required in a CSV file',
-            DT::dataTableOutput("TRH_table")
           )),
         layout_column_wrap(
           width = 1,
