@@ -67,6 +67,8 @@ library(SaltsR)
 
 ## Load the Application
 
+[SaltsR Online Application](https://oceanonline.shinyapps.io/SaltsRApp/)
+
 The SaltsR package provides an application to test its calculations. This interactive tool allows you to evaluate the package's output using ion chromatography data.
 
 To launch the application, simply run the following command in R:
