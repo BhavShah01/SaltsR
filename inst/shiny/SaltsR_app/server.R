@@ -17,6 +17,7 @@ library(ggrepel)
 library(leaflet)
 library(worldmet)
 library(shinyWidgets)
+library(scales)
 
 
 server <- function(input, output) {
@@ -88,8 +89,16 @@ server <- function(input, output) {
 
   output$salts_messages <- renderText({
     pathway = salts_corrected() |> pull(ECOS_pathway)
+    pathway = paste0(pathway, " used")
     warnings = salts_corrected() |> pull(ECOS_warnings)
-    paste(pathway, warnings, sep = ". ")
+    excess1 = salts_corrected() |> pull(imbalance_allocation)
+    excess <- ifelse(excess1 == "dExcess Cations", "Sample has excess Cations",
+      ifelse(excess1 == "dExcess Anions", "Sample has excess Anions", NA_character_))
+    gypsum_content = salts_corrected() |> pull(gypsum_content_limit)
+    gypsum = paste0("Theorectical gypsum content: ", gypsum_content, "%")
+    total_ion = salts_corrected() |> pull(total_wt_adj)
+    total = paste0("Total ion content, excluding gypsum: ", total_ion, "w.%")
+    paste(warnings, pathway, excess, gypsum, total, sep = ". ")
   })
 
   output$salts_download <- downloadHandler(
@@ -220,17 +229,34 @@ server <- function(input, output) {
   # Graph
   output$ECOSoutput_graph <- renderPlot({
     req(ECOS_output())
-    ECOS_output() |>
-      ggplot(aes(X, Y, col = Salt, fill = Salt)) +
+    data <- ECOS_output()
+
+    p <- ggplot(data, aes(X, Y, col = Salt, fill = Salt)) +
       geom_line(alpha = 0.7, size = 1.5) +
       geom_point(alpha = 0.7, size = 1) +
-      ggrepel::geom_text_repel(aes(label = Crystallisation)) +
       labs(x = "Humidity (%RH)", y = "Amount of substance (mol)",
            title = "ECOS model output",
-           subtitle = paste0("Temperature ", unique(ECOS_output()$Temp), "C"),
+           subtitle = paste0("Temperature ", unique(data$Temp), "C"),
            caption = "Crystallisation points are labelled") +
       theme_classic(base_size = 16)
+
+    if (input$filter_crystal) { # Add crystallisation points label if checked
+      p <- p + ggrepel::geom_text_repel(
+        aes(label = Crystallisation),
+        na.rm = TRUE
+      )
+    }
+
+    if (input$filter_eqm) { # Add equilibrium points label if checked
+      p <- p + ggrepel::geom_text_repel(
+        aes(label = RH_eqm),
+        na.rm = TRUE,
+      )
+    }
+
+    p
   })
+
 
 
   # ECOS output (multiple) ----

@@ -21,7 +21,8 @@ ui <- page_sidebar(
       "Input for Runsalt",
       layout_columns(
         card_title("Salt Balance for ECOS Runsalt"),
-        markdown("**[Use the PREDICT Salt Content Calculator (recommended for the most up to date calculations)](https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/)**"),
+        markdown("**[PREDICT Salt Content Calculator:](https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/)**
+                Recommended for details and the most up to date calculations."),
         col_widths = c(4, 8)
       ),
       layout_column_wrap(
@@ -49,8 +50,8 @@ ui <- page_sidebar(
           card_body(
             class = "p-0",
             textOutput("salts_messages"),
-            # plotOutput("salts_corrected_graph_wt"),
-            plotOutput("salts_corrected_graph_mol"),
+            plotOutput("salts_corrected_graph_wt"),
+            # plotOutput("salts_corrected_graph_mol"),
           )
         ),
         card(
@@ -73,6 +74,8 @@ ui <- page_sidebar(
                "1) Export the graph data from Runsalt: Plot > Export Plot Data...",
                fileInput("ECOS_file_upload", "2) Load a Runsalt Output File"),
                uiOutput("ECOS_temperature"),
+               checkboxInput("filter_crystal", "Add crystallisation points", value = TRUE),
+               checkboxInput("filter_eqm", "Add equilibrium points", value = FALSE),
                DT::dataTableOutput("ECOSoutput_table")
           )),
         layout_column_wrap(

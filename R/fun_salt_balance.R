@@ -30,31 +30,21 @@
 #'
 #' @examples
 #' \dontrun{
-#' fun_salt_balance(sample_name = "Pathway 2",
-#'                  dry_g = 0.801,
+#' fun_salt_balance(sample_name = "Example",
+#'                  dry_g = 1,
 #'                  water_ml = 100,
-#'                  chloride_ppm = 14.651,
-#'                  nitrate_ppm = 17.339,
-#'                  sulfate_ppm = 39.923,
-#'                  sodium_ppm = 2.027,
-#'                  potassium_ppm = 2.04,
-#'                  calcium_ppm = 49.809,
-#'                  magnesium_ppm = 0.581) |>
+#'                  chloride_ppm = 50,
+#'                  nitrate_ppm = 30,
+#'                  sulfate_ppm = 20,
+#'                  sodium_ppm = 40,
+#'                  potassium_ppm = 10,
+#'                  calcium_ppm = 15,
+#'                  magnesium_ppm = 5) |>
 #' dplyr::glimpse()
 #' }
 #'
 #'
 fun_salt_balance <- function(
-  # sample_name = "A unique sample name to link to your metadata",
-  # dry_g = 0.801,
-  # water_ml = 100,
-  # chloride_ppm = 14.651,
-  # nitrate_ppm = 17.339,
-  # sulfate_ppm = 39.923,
-  # sodium_ppm = 2.027,
-  # potassium_ppm = 2.04,
-  # calcium_ppm = 49.809,
-  # magnesium_ppm = 0.581
 
   sample_name,
   dry_g,
