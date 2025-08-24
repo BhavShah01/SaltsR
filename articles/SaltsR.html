@@ -94,19 +94,18 @@ Application</a></p>
 <p>The SaltsR package provides an application to test its calculations.
 This interactive tool allows you to evaluate the package’s output using
 ion chromatography data.</p>
+<p>For details about the calculations and the most up-to-date functions,
+please use the <a href="https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/" class="external-link">Salts
+Content Calculator</a>.</p>
 <p>To launch the application, simply run the following command in R:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/runSaltsR_app.html">runSaltsR_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>This will open the SaltsR application, where you can input your ion
-chromatography data and explore the package’s functionality.</p>
 </div>
 <div class="section level2">
 <h2 id="salt-balance-function">Salt balance function<a class="anchor" aria-label="anchor" href="#salt-balance-function"></a>
 </h2>
 <p>Use the function below with the following inputs to perform a salt
 balance. The full outputs of the function are shown underneath.</p>
-<p>For the most up-to-date calculations, please use the <a href="https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/" class="external-link">Salts
-Content Calculator</a>.</p>
 <p>Please raise issues with the SaltsR calculations on the <a href="https://github.com/BhavShah01/SaltsR/issues" class="external-link">Github issues
 page</a>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -133,7 +132,7 @@ page</a>.</p>
 <span>                 magnesium_ppm <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 1</span></span>
-<span><span class="co">#&gt; Columns: 151</span></span>
+<span><span class="co">#&gt; Columns: 144</span></span>
 <span><span class="co">#&gt; $ sample_name                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Example"</span></span>
 <span><span class="co">#&gt; $ dry_g                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1</span></span>
 <span><span class="co">#&gt; $ water_ml                     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 100</span></span>
@@ -144,13 +143,6 @@ page</a>.</p>
 <span><span class="co">#&gt; $ potassium_ppm                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 10</span></span>
 <span><span class="co">#&gt; $ calcium_ppm                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 15</span></span>
 <span><span class="co">#&gt; $ magnesium_ppm                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5</span></span>
-<span><span class="co">#&gt; $ chloride_mol                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.141033</span></span>
-<span><span class="co">#&gt; $ nitrate_mol                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.04838327</span></span>
-<span><span class="co">#&gt; $ sulfate_mol                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.02081945</span></span>
-<span><span class="co">#&gt; $ sodium_mol                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.1739904</span></span>
-<span><span class="co">#&gt; $ potassium_mol                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.02557656</span></span>
-<span><span class="co">#&gt; $ calcium_mol                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.03742702</span></span>
-<span><span class="co">#&gt; $ magnesium_mol                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.0205719</span></span>
 <span><span class="co">#&gt; $ chloride_wt                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.005</span></span>
 <span><span class="co">#&gt; $ nitrate_wt                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.003</span></span>
 <span><span class="co">#&gt; $ sulfate_wt                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.002</span></span>
