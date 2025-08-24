@@ -13,7 +13,7 @@ A data frame with 2 columns:
 }
 }
 \source{
-Climate
+SaltsR
 }
 \usage{
 salt_names

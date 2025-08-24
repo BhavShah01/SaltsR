@@ -2,31 +2,52 @@
 % Please edit documentation in R/fun_salt_mol.R
 \name{fun_salt_mol}
 \alias{fun_salt_mol}
-\title{Molar concentration, mols}
+\title{Molar concentration (mols)}
 \usage{
 fun_salt_mol(salt_ppm, water_ml, mol_wts, salt_charges_z)
 }
 \arguments{
 \item{salt_ppm}{Ion concentration in ppm}
 
-\item{water_ml}{Amount of water, ml}
+\item{water_ml}{Amount of water in millilitres}
 
 \item{mol_wts}{Molecular weight}
 
-\item{salt_charges_z}{Salt charge, z}
+\item{salt_charges_z}{Ionic charge of the salt}
 }
 \value{
-salt_mol Molar concentration, mols
+Numeric value giving the molar concentration (mols)
 }
 \description{
-Calculate ion values as mole fraction (mols)
+Calculate ion values expressed as mole fraction (mols).
 }
 \details{
-Eqn
+Calculates the molar concentration from the ion concentration in ppm,
+volume of water, molecular weight, and ionic charge.
+
+The calculation used is:
+\deqn{
+\text{mols} = \frac{0.001 \times C_{\mathrm{ppm}} \times V_{\mathrm{water}}}
+               {\frac{M}{z}}
+}
+where:
+\itemize{
+  \item \eqn{C_{\mathrm{ppm}}}: ion concentration in ppm
+  \item \eqn{V_{\mathrm{water}}}: volume of water in millilitres
+  \item \eqn{M}: molecular weight
+  \item \eqn{z}: ionic charge
+}
 }
 \examples{
-# Chloride test data
+# Chloride test data with scalar inputs
 fun_salt_mol(66.824, 100, 35.453, 1)
 
+# Vectorized usage with salt_test and mol_wts data frames/lists
+fun_salt_mol(
+  salt_test$chloride_ppm,
+  salt_test$water_ml,
+  mol_wts$chloride,
+  salt_charges_z$chloride
+)
 
 }

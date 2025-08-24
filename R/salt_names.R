@@ -10,5 +10,6 @@
 #'   ...
 #' }
 #'
-#' @source Climate
+#' @source SaltsR
+#'
 "salt_names"

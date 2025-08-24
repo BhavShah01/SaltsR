@@ -19,4 +19,6 @@
 #'   ...
 #' }
 #'
+#' @source SaltsR
+#'
 "salt_test"

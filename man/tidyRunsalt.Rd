@@ -4,39 +4,40 @@
 \alias{tidyRunsalt}
 \title{Read and tidy Runsalt output data}
 \usage{
-tidyRunsalt(file_path, X_col = "RH", Y_col = "mol", Temp_value = 20)
+tidyRunsalt(ECOS_output, Temp_value = 20)
 }
 \arguments{
-\item{file_path}{A character string specifying the path to the Runsalt output file.}
+\item{ECOS_output}{A character string specifying the path to the Runsalt output file.
+This file is typically obtained via Runsalt plot menu: Plot > Export Plot Data...}
 
-\item{X_col}{A character string specifying the X column variable. Defaul is "RH".}
-
-\item{Y_col}{A character string specifying the Y column variable. Defaul is "mol".}
-
-\item{Temp_value}{A numeric specifying the temperature (C). Default is 20.}
+\item{Temp_value}{Numeric. Temperature in degrees Celsius. Default is 20.}
 }
 \value{
-A tibble with columns:
-
+A tibble with the columns:
 \itemize{
-  \item Salt The type of salt
-  \item RH Relative Humidity
-  \item mol Moles of salt
-  \item filename The name of the input file
+  \item \strong{Salt}: Salt type (character).
+  \item \strong{RH}: Relative Humidity (numeric).
+  \item \strong{mol}: Moles of salt (numeric).
+  \item \strong{Temp}: Temperature value (numeric).
+  \item \strong{filename}: Input file name (character).
+  \item \strong{Crystallisation}: Relative Humidity value at crystallisation point (numeric; NA otherwise).
+  \item \strong{RH_eqm}: Relative Humidity value at equilibrium points (numeric or empty string).
 }
 }
 \description{
-This function reads a Runsalt output file, processes it, and returns a tidy dataframe.
-It separates salt and variable information, pivots the data, and adds columns for
-relative humidity (RH) and moles (mol).
+Reads a Runsalt output file and returns a tidy tibble.
+The function processes the data by separating salt and variable information,
+pivoting it to long format, dropping missing values, and adding columns for
+relative humidity (RH), moles (mol), temperature, filename, and additional
+crystallisation and equilibrium indicators.
 }
 \examples{
-
 \dontrun{
+# Read Runsalt output file and tidy data
 result <- tidyRunsalt("path/to/runsalt/output.txt")
 head(result)
+
+# Interactive file selection with custom temperature
+tidyRunsalt(file.choose(), Temp_value = 15)
 }
-
-
-
 }

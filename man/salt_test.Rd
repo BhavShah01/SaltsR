@@ -20,6 +20,9 @@ A data frame with 10 columns:
   ...
 }
 }
+\source{
+SaltsR
+}
 \usage{
 salt_test
 }

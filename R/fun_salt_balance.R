@@ -1,47 +1,58 @@
 #' Calculating salt balance from ion chromatography data
 #'
 #' @description
-#' Performs a salt balance on ion chromatography data and returns outputs for ECOS Runsalt software.
-#'
+#' Performs a salt balance on ion chromatography data and returns outputs formatted
+#' for use with ECOS Runsalt software.
 #'
 #' @references
-#' Godts, S., Steiger, M., Orr, S.A. et al. Charge balance calculations for mixed salt systems applied to a large dataset from the built environment. Sci Data 9, 324 (2022). https://doi.org/10.1038/s41597-022-01445-9
+#' Godts, S., Steiger, M., Orr, S.A. et al. Charge balance calculations for mixed salt systems
+#' applied to a large dataset from the built environment. Sci Data 9, 324 (2022).
+#' https://doi.org/10.1038/s41597-022-01445-9
+#'
+#' @source
+#' https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/
+#'
+#' @note
+#' Use the PREDICT Salt Content Calculator for the most up-to-date calculation
+#' and detailed explanation of the methodology:
+#' https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/
+#'
+#' SaltsR tool for online version: https://oceanonline.shinyapps.io/SaltsRApp/
 #'
 #'
-#' @source https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/`
+#' @param sample_name Character. Name or ID of the sample.
+#' @param dry_g Numeric. Dry mass of the sample, in grams.
+#' @param water_ml Numeric. Volume of water added for ion chromatography, in millilitres.
+#' @param chloride_ppm Numeric. Chloride concentration in ppm.
+#' @param nitrate_ppm Numeric. Nitrate concentration in ppm.
+#' @param sulfate_ppm Numeric. Sulfate concentration in ppm.
+#' @param sodium_ppm Numeric. Sodium concentration in ppm.
+#' @param potassium_ppm Numeric. Potassium concentration in ppm.
+#' @param calcium_ppm Numeric. Calcium concentration in ppm.
+#' @param magnesium_ppm Numeric. Magnesium concentration in ppm.
 #'
+#' @return A tibble containing balanced ion molar concentrations, weight fractions,
+#' milliequivalents, charge balance diagnostics, ECOS-compatible inputs, and other relevant calculations.
 #'
-#' @param sample_name Sample name
-#' @param dry_g Dry mass of sample, g
-#' @param water_ml Water added for ion chromatography, ml
-#' @param chloride_ppm Chloride concentration, ppm
-#' @param nitrate_ppm Nitrate concentration, ppm
-#' @param sulfate_ppm Sulfate concentration, ppm
-#' @param sodium_ppm Sodium concentration, ppm
-#' @param potassium_ppm Potassium concentration, ppm
-#' @param calcium_ppm Calcium concentration, ppm
-#' @param magnesium_ppm Magnesium concentration, ppm
-#'
-#' @return Dataframe of balanced ions for ECOS Runsalt software
 #' @export
 #'
 #' @importFrom tibble tibble
 #' @importFrom dplyr glimpse
 #'
 #' @examples
-#' \dontrun{
-#' fun_salt_balance(sample_name = "Example",
-#'                  dry_g = 1,
-#'                  water_ml = 100,
-#'                  chloride_ppm = 50,
-#'                  nitrate_ppm = 30,
-#'                  sulfate_ppm = 20,
-#'                  sodium_ppm = 40,
-#'                  potassium_ppm = 10,
-#'                  calcium_ppm = 15,
-#'                  magnesium_ppm = 5) |>
+#' fun_salt_balance(
+#'   sample_name = "Example",
+#'   dry_g = 1,
+#'   water_ml = 100,
+#'   chloride_ppm = 50,
+#'   nitrate_ppm = 30,
+#'   sulfate_ppm = 20,
+#'   sodium_ppm = 40,
+#'   potassium_ppm = 10,
+#'   calcium_ppm = 15,
+#'   magnesium_ppm = 5
+#' ) |>
 #' dplyr::glimpse()
-#' }
 #'
 #'
 fun_salt_balance <- function(
@@ -82,18 +93,6 @@ fun_salt_balance <- function(
     calcium = 2,
     magnesium = 2
   )
-
-
-  # Eqn 0. Convert to Mols
-  chloride_mol = (chloride_ppm * (water_ml )) / (mol_wts$chloride * 1000)
-  nitrate_mol = (nitrate_ppm * (water_ml )) / (mol_wts$nitrate * 1000)
-  sulfate_mol = (sulfate_ppm * (water_ml )) / (mol_wts$sulfate * 1000)
-  sodium_mol = (sodium_ppm * (water_ml )) / (mol_wts$sodium * 1000)
-  potassium_mol = (potassium_ppm * (water_ml )) / (mol_wts$potassium * 1000)
-  calcium_mol = (calcium_ppm * (water_ml )) / (mol_wts$calcium * 1000)
-  magnesium_mol = (magnesium_ppm * (water_ml )) / (mol_wts$magnesium * 1000)
-
-
 
   # Eqn 1. Weight fractions (displayed as weight percents)
   # Eqn 1. Ion content in the sample (w\%)
@@ -418,16 +417,6 @@ fun_salt_balance <- function(
     potassium_ppm,
     calcium_ppm,
     magnesium_ppm,
-
-
-    # Eqn 0 # added mol calculation
-    chloride_mol,
-    nitrate_mol,
-    sulfate_mol,
-    sodium_mol,
-    potassium_mol,
-    calcium_mol,
-    magnesium_mol,
 
     # Eqn 1
     chloride_wt,

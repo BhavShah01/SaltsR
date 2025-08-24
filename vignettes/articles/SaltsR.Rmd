@@ -27,20 +27,17 @@ library(SaltsR)
 
 The SaltsR package provides an application to test its calculations. This interactive tool allows you to evaluate the package's output using ion chromatography data.
 
+For details about the calculations and the most up-to-date functions, please use the [Salts Content Calculator](https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/).
+
 To launch the application, simply run the following command in R:
 
 ``` r
 runSaltsR_app()
 ```
 
-This will open the SaltsR application, where you can input your ion chromatography data and explore the package's functionality.
-
-
 ## Salt balance function
 
 Use the function below with the following inputs to perform a salt balance. The full outputs of the function are shown underneath.
-
-For the most up-to-date calculations, please use the [Salts Content Calculator](https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/).
 
 Please raise issues with the SaltsR calculations on the [Github issues page](https://github.com/BhavShah01/SaltsR/issues).
 

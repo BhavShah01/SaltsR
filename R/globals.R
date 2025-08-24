@@ -44,6 +44,18 @@ utils::globalVariables(
     "sodium_mEq_SO4",
     "ipotassium_mEq_SO4",
     "calcium_mEq_SO4",
-    "magnesium_mEq_SO4"
+    "magnesium_mEq_SO4",
+
+    "X",
+    "Y",
+    "Salt",
+    "Crystallisation",
+    "RH_eqm",
+    "X1",
+    "value",
+    "Variable",
+    "diffY",
+    "diffY2"
+
     )
   )

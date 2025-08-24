@@ -10,6 +10,7 @@ reference:
     - fun_salt_balance
     - tidyRunsalt
     - tidyRunsaltFolder
+    - graph_salt_balance
 - title: SaltsR Application
   desc: SaltsR_app to peform salt balance for ECOS Runsalt
   contents:
@@ -23,6 +24,7 @@ reference:
     - salt_charges_z
     - salt_names
     - salt_test
+    - ECOS_Phases
 - title: Other functions
   desc: Tools for other calculations
   contents:

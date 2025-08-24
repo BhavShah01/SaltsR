@@ -14,5 +14,6 @@
 #'   ...
 #' }
 #'
+#' @source Wikipedia
 #'
 "mol_wts"

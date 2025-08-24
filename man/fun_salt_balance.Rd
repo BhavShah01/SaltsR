@@ -4,7 +4,7 @@
 \alias{fun_salt_balance}
 \title{Calculating salt balance from ion chromatography data}
 \source{
-https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/`
+https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/
 }
 \usage{
 fun_salt_balance(
@@ -21,49 +21,60 @@ fun_salt_balance(
 )
 }
 \arguments{
-\item{sample_name}{Sample name}
+\item{sample_name}{Character. Name or ID of the sample.}
 
-\item{dry_g}{Dry mass of sample, g}
+\item{dry_g}{Numeric. Dry mass of the sample, in grams.}
 
-\item{water_ml}{Water added for ion chromatography, ml}
+\item{water_ml}{Numeric. Volume of water added for ion chromatography, in millilitres.}
 
-\item{chloride_ppm}{Chloride concentration, ppm}
+\item{chloride_ppm}{Numeric. Chloride concentration in ppm.}
 
-\item{nitrate_ppm}{Nitrate concentration, ppm}
+\item{nitrate_ppm}{Numeric. Nitrate concentration in ppm.}
 
-\item{sulfate_ppm}{Sulfate concentration, ppm}
+\item{sulfate_ppm}{Numeric. Sulfate concentration in ppm.}
 
-\item{sodium_ppm}{Sodium concentration, ppm}
+\item{sodium_ppm}{Numeric. Sodium concentration in ppm.}
 
-\item{potassium_ppm}{Potassium concentration, ppm}
+\item{potassium_ppm}{Numeric. Potassium concentration in ppm.}
 
-\item{calcium_ppm}{Calcium concentration, ppm}
+\item{calcium_ppm}{Numeric. Calcium concentration in ppm.}
 
-\item{magnesium_ppm}{Magnesium concentration, ppm}
+\item{magnesium_ppm}{Numeric. Magnesium concentration in ppm.}
 }
 \value{
-Dataframe of balanced ions for ECOS Runsalt software
+A tibble containing balanced ion molar concentrations, weight fractions,
+milliequivalents, charge balance diagnostics, ECOS-compatible inputs, and other relevant calculations.
 }
 \description{
-Performs a salt balance on ion chromatography data and returns outputs for ECOS Runsalt software.
+Performs a salt balance on ion chromatography data and returns outputs formatted
+for use with ECOS Runsalt software.
+}
+\note{
+Use the PREDICT Salt Content Calculator for the most up-to-date calculation
+and detailed explanation of the methodology:
+https://predict.kikirpa.be/index.php/tools/moisture-and-salt-sample-data-analysis-tool/
+
+SaltsR tool for online version: https://oceanonline.shinyapps.io/SaltsRApp/
 }
 \examples{
-\dontrun{
-fun_salt_balance(sample_name = "Example",
-                 dry_g = 1,
-                 water_ml = 100,
-                 chloride_ppm = 50,
-                 nitrate_ppm = 30,
-                 sulfate_ppm = 20,
-                 sodium_ppm = 40,
-                 potassium_ppm = 10,
-                 calcium_ppm = 15,
-                 magnesium_ppm = 5) |>
+fun_salt_balance(
+  sample_name = "Example",
+  dry_g = 1,
+  water_ml = 100,
+  chloride_ppm = 50,
+  nitrate_ppm = 30,
+  sulfate_ppm = 20,
+  sodium_ppm = 40,
+  potassium_ppm = 10,
+  calcium_ppm = 15,
+  magnesium_ppm = 5
+) |>
 dplyr::glimpse()
-}
 
 
 }
 \references{
-Godts, S., Steiger, M., Orr, S.A. et al. Charge balance calculations for mixed salt systems applied to a large dataset from the built environment. Sci Data 9, 324 (2022). https://doi.org/10.1038/s41597-022-01445-9
+Godts, S., Steiger, M., Orr, S.A. et al. Charge balance calculations for mixed salt systems
+applied to a large dataset from the built environment. Sci Data 9, 324 (2022).
+https://doi.org/10.1038/s41597-022-01445-9
 }

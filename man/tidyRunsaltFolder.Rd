@@ -4,44 +4,37 @@
 \alias{tidyRunsaltFolder}
 \title{Process multiple Runsalt output files in a folder}
 \usage{
-tidyRunsaltFolder(
-  folder_path,
-  X_col = "RH",
-  Y_col = "mol",
-  pattern = "\\\\.txt$"
-)
+tidyRunsaltFolder(folder_path, pattern = "\\\\.txt$", Temp_value = 20)
 }
 \arguments{
-\item{folder_path}{folder_path A character string specifying the path to the folder}
+\item{folder_path}{Character. Path to the folder containing Runsalt output files.}
 
-\item{X_col}{A character string specifying the X column variable. Default is "RH".}
+\item{pattern}{Character. Regex pattern to match output files (default is "\\.txt$").}
 
-\item{Y_col}{A character string specifying the Y column variable. Default is "mol".}
-
-\item{pattern}{A character string specifying the file pattern to match.}
+\item{Temp_value}{Numeric. Temperature in degrees Celsius (default is 20).}
 }
 \value{
 A tibble with columns:
-
 \itemize{
   \item Salt The type of salt
-  \item RH Relative Humidity (or the specified X_col)
-  \item mol Moles of salt (or the specified Y_col)
-  \item filename The name of the input file
+  \item RH Relative Humidity
+  \item mol Moles of salt
+  \item filename Name of the input file
+  \item Temp Temperature
+  \item Crystallisation Crystallisation point label
+  \item RH_eqm Equilibrium RH label
 }
+Additional columns may be present depending on processing.
 }
 \description{
-This function reads all Runsalt output files in a specified folder,
-processes them, and returns a combined tidy dataframe. It applies the
-tidyRunsalt logic to each file, handling potential errors, and then
-row-binds all results into a single dataframe.
+Reads all Runsalt output files in a specified folder, applies the
+tidyRunsalt logic to each file, and combines the results into a single tidy dataframe.
+Handles potential errors gracefully and binds all results row-wise for analysis.
 }
 \examples{
 \dontrun{
-result <- tidyRunsaltFolder("path/to/folder/with/runsalt/outputs")
-head(result)
+# Combine and tidy all Runsalt output files from a folder
+combined <- tidyRunsaltFolder("path/to/folder/with/runsalt/files")
+head(combined)
 }
-
-
-
 }

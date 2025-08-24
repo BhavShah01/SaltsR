@@ -1,11 +1,11 @@
 ## R helper file for SaltsRApp ----
 
 
-tidyRunsalt <- function(file_path, Temp_value = 20) {
-  FILENAME = basename(file_path)
+tidyRunsalt <- function(ECOS_output, Temp_value = 20) {
+  FILENAME = basename(ECOS_output)
 
   runsalt_output <-
-    read_table(file_path, col_names = FALSE) |>
+    read_table(ECOS_output, col_names = FALSE) |>
     pivot_longer(-1) |>
     separate(X1, sep = "_", into = c("Salt", "Variable")) |>
     drop_na(value) |>

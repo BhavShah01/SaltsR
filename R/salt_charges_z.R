@@ -4,15 +4,16 @@
 #'
 #' @format A data frame with 7 columns:
 #' \describe{
-#'   \item{chloride}{Chloride charge}
-#'   \item{nitrate}{Nitrate charge}
-#'   \item{sulfate}{Sulfate charge}
-#'   \item{sodium}{Sodium charge}
-#'   \item{potassium}{Potassium charge}
-#'   \item{calcium}{Calcium charge}
-#'   \item{magnesium}{Magnesium charge}
+#'   \item{chloride}{Chloride = 1}
+#'   \item{nitrate}{Nitrate = 1}
+#'   \item{sulfate}{Sulfate = 2}
+#'   \item{sodium}{Sodium = 1}
+#'   \item{potassium}{Potassium = 1}
+#'   \item{calcium}{Calcium = 2}
+#'   \item{magnesium}{Magnesium = 2}
 #'   ...
 #' }
 #'
-#' @source Climate
+#' @source Wikipedia
+#'
 "salt_charges_z"
